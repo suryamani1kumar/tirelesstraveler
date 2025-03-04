@@ -215,3 +215,60 @@ p {
   background: black;
   color: white;
 }
+.popular-posts {
+  max-width: 400px;
+  margin: auto;
+}
+
+.popular-posts h2 {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #555;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.popular-posts h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  margin-top: 5px;
+}
+
+.post {
+  position: relative;
+  color: white;
+  text-align: left;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.post img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.post-content {
+  position: absolute;
+  top: 32%;
+  left: 34%;
+}
+
+.post-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.post-date {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
