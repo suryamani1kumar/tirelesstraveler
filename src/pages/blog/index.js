@@ -43,6 +43,42 @@ const Blog = () => {
           </a>
         </div>
       </div>
+               <div className="popular-posts">
+      <h2>Popular Posts</h2>
+
+      <div className="post">
+        <img
+          src="https://dummyimage.com/300x150/b0b0b0/d3d5eb"
+          alt="Milan"
+        />
+        <div className="post-content">
+          <p className="post-title">Trip to Italy: Milan</p>
+          <p className="post-date"><i className="fa fa-bookmark"></i>January 7, 2018</p>
+        </div>
+      </div>
+
+      <div className="post">
+        <img
+          src="https://dummyimage.com/300x150/b0b0b0/d3d5eb"
+          alt="Piatra Craiului"
+        />
+        <div className="post-content">
+          <p className="post-title">Piatra Craiului, Romania</p>
+          <p className="post-date"><i className="fa fa-bookmark"></i>January 6, 2018</p>
+        </div>
+      </div>
+
+      <div className="post">
+        <img
+          src="https://dummyimage.com/300x150/b0b0b0/d3d5eb"
+          alt="Fuerteventura"
+        />
+        <div className="post-content">
+          <p className="post-title">Fuerteventura, Spain</p>
+          <p className="post-date"><i className="fa fa-bookmark"></i>January 5, 2018</p>
+        </div>
+      </div>
+    </div>
     </>
   );
 };
