@@ -272,3 +272,68 @@ p {
   display: flex;
   align-items: center;
 }
+.related-posts {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+.related-posts h3 {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.related-posts h3::after {
+  content: "";
+  display: inline-block;
+  width: 600px;
+  height: 1px;
+  position: relative;
+  background: rgb(216, 216, 216);
+  top: -5px;
+  margin-left: 11px;
+}
+.posts {
+  display: flex;
+  gap: 20px;
+}
+.post {
+  flex: 1;
+}
+.post img {
+  width: 100%;
+  height: auto;
+}
+.post a {
+  text-decoration: none;
+  color: #0073e6;
+  font-size: 18px;
+  display: block;
+  margin-top: 10px;
+}
+.post a:hover {
+  text-decoration: underline;
+}
+.button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: none;
+  border: 1px solid black;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+}
+.button:hover {
+  background: black;
+  color: white;
+}
+.post span::after {
+  content: "";
+  display: inline-block;
+  width: 200px;
+  height: 1px;
+  position: relative;
+  background: rgb(216, 216, 216);
+  top: -5px;
+  margin-left: 11px;
+}
