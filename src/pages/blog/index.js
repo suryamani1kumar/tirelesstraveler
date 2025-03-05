@@ -4,7 +4,7 @@ import React from 'react';
 
 const Blog = () => {
   return (
-    <>
+    <div className="container mx-auto px-4">
       <div className="author-card">
         <h4 className="author-title">AUTHOR</h4>
         <div className="author-image">
@@ -43,43 +43,64 @@ const Blog = () => {
           </a>
         </div>
       </div>
-               <div className="popular-posts">
-      <h2>Popular Posts</h2>
+      <div className="popular-posts">
+        <h2>Popular Posts</h2>
 
-      <div className="post">
-        <img
-          src="https://dummyimage.com/300x150/b0b0b0/d3d5eb"
-          alt="Milan"
-        />
-        <div className="post-content">
-          <p className="post-title">Trip to Italy: Milan</p>
-          <p className="post-date"><i className="fa fa-bookmark"></i>January 7, 2018</p>
+        <div className="popular-post">
+          <div className="postimgcontainer">
+            <Image
+              src="/images/piatra-craiului-national-park-romania.jpg"
+              alt="piatra-craiului-national-park-romania"
+              width={0}
+              height={0}
+            />
+          </div>
+
+          <div className="popular-post-content">
+            <p className="popular-post-title">Trip to Italy: Milan</p>
+            <p className="popular-post-date">
+              <i className="fa fa-bookmark mr-2"></i>January 7, 2018
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="post">
-        <img
-          src="https://dummyimage.com/300x150/b0b0b0/d3d5eb"
-          alt="Piatra Craiului"
-        />
-        <div className="post-content">
-          <p className="post-title">Piatra Craiului, Romania</p>
-          <p className="post-date"><i className="fa fa-bookmark"></i>January 6, 2018</p>
+        <div className="popular-post">
+          <div className="postimgcontainer">
+            <Image
+              src="/images/piatra-craiului-national-park-romania.jpg"
+              alt="piatra-craiului-national-park-romania"
+              width={0}
+              height={0}
+            />
+          </div>
+
+          <div className="popular-post-content">
+            <p className="popular-post-title">Trip to Italy: Milan</p>
+            <p className="popular-post-date">
+              <i className="fa fa-bookmark mr-2"></i>January 7, 2018
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="post">
-        <img
-          src="https://dummyimage.com/300x150/b0b0b0/d3d5eb"
-          alt="Fuerteventura"
-        />
-        <div className="post-content">
-          <p className="post-title">Fuerteventura, Spain</p>
-          <p className="post-date"><i className="fa fa-bookmark"></i>January 5, 2018</p>
+        <div className="popular-post">
+          <div className="postimgcontainer">
+            <Image
+              src="/images/piatra-craiului-national-park-romania.jpg"
+              alt="piatra-craiului-national-park-romania"
+              width={0}
+              height={0}
+            />
+          </div>
+
+          <div className="popular-post-content">
+            <p className="popular-post-title">Trip to Italy: Milan</p>
+            <p className="popular-post-date">
+              <i className="fa fa-bookmark mr-2"></i>January 7, 2018
+            </p>
+          </div>
         </div>
       </div>
     </div>
-    </>
   );
 };
 

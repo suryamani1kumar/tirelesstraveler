@@ -6,23 +6,24 @@
 }
 
 main {
-  margin-top: 80px;
-  padding: 20px;
+  margin-top: 60px;
 }
 
 /* -------------------------------Header------------------------------ */
 .sticky-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background: white;
-  padding: 15px 40px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+}
+
+.flexcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -215,9 +216,11 @@ p {
   background: black;
   color: white;
 }
+
 .popular-posts {
   max-width: 400px;
   margin: auto;
+
 }
 
 .popular-posts h2 {
@@ -227,61 +230,76 @@ p {
   color: #555;
   margin-bottom: 15px;
   position: relative;
-  display: inline-block;
+
+  text-align: center;
 }
 
+.popular-posts h2::before,
 .popular-posts h2::after {
   content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
+  display: inline-block;
+  width: 114px;
+  height: 2px;
   background: #ddd;
-  margin-top: 5px;
+  position: relative;
+  top: -5px;
+  margin: 0 10px;
 }
 
-.post {
+.popular-post {
   position: relative;
   color: white;
   text-align: left;
   border-radius: 5px;
   overflow: hidden;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
-.post img {
-  width: 100%;
+.postimgcontainer {
+  height: 300px;
   height: 150px;
+}
+
+.postimgcontainer img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   filter: brightness(70%);
 }
 
-.post-content {
+.popular-post-content {
   position: absolute;
   top: 32%;
   left: 34%;
 }
 
-.post-title {
+.popular-post-title {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  color: #fff;
 }
 
-.post-date {
+.popular-post-date {
   font-size: 12px;
   display: flex;
   align-items: center;
+  color: #fff;
+  margin-left: 10px;
 }
+
 .related-posts {
   max-width: 800px;
-  margin: auto;
   padding: 20px;
 }
+
 .related-posts h3 {
   text-transform: uppercase;
   font-size: 16px;
   margin-bottom: 10px;
 }
+
 .related-posts h3::after {
   content: "";
   display: inline-block;
@@ -292,17 +310,21 @@ p {
   top: -5px;
   margin-left: 11px;
 }
+
 .posts {
   display: flex;
   gap: 20px;
 }
+
 .post {
   flex: 1;
 }
+
 .post img {
   width: 100%;
   height: auto;
 }
+
 .post a {
   text-decoration: none;
   color: #0073e6;
@@ -310,9 +332,11 @@ p {
   display: block;
   margin-top: 10px;
 }
+
 .post a:hover {
   text-decoration: underline;
 }
+
 .button {
   display: inline-block;
   margin-top: 10px;
@@ -323,10 +347,12 @@ p {
   font-size: 12px;
   cursor: pointer;
 }
+
 .button:hover {
   background: black;
   color: white;
 }
+
 .post span::after {
   content: "";
   display: inline-block;
