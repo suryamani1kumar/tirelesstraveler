@@ -14,7 +14,7 @@ const Footer = () => {
             <p>Visited</p>
           </div>
           <div className="stat">
-            <i className="fa fa-route"></i>
+            <i className="fa fa-globe"></i>
             <h2>250,000 KM</h2>
             <p>Traveled</p>
           </div>
@@ -25,6 +25,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <p className="py-4 text-center">
+        © {new Date().getFullYear()}. All Rights Reserved.
+      </p>
     </div>
   );
 };

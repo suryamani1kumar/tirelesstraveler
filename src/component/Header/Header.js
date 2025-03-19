@@ -17,7 +17,10 @@ const Header = () => {
         <nav className="flexcontainer">
           <ul>
             <li>
-              <Link href="/book">Book</Link>
+              <Link href="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link href="/publication">Publication</Link>
             </li>
             <li>
               <Link href="/about">About</Link>
