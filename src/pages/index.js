@@ -91,6 +91,9 @@ export default function Home() {
                 Reach Me on <a href="#">Twitter</a> or <a href="#">Facebook</a>{' '}
                 or <a href="#">LinkedIn</a>
               </p>
+              <button class="about-read-more">
+                <Link href="/about">READ MORE</Link>
+              </button>
             </div>
           </div>
         </div>
@@ -118,12 +121,17 @@ export default function Home() {
               marks his first writing effort, with more to come.
             </p>
             <button class="about-read-more">
-              <Link href="/about">READ MORE</Link>
+              <Link href="/publication">READ MORE</Link>
             </button>
           </div>
-          <div class="about-content-images">
-            <img src="/images/mountain-bg-engine.webp" alt="Airplane" />
-          </div>
+          {/* <div class="about-content-images">
+            <Image
+              src="/images/tireless_traveler_cover-title.webp"
+              alt="tireless_traveler_cover-title"
+              height={0}
+              width={0}
+            />
+          </div> */}
         </section>
         <div className="home_card_wrapper">
           {Array(3)
