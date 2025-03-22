@@ -1,5 +1,10 @@
 const Publication = () => {
-  return <div className="container mx-auto px-4">Book</div>;
+  return (
+    <div>
+      <div class="banner_blog">Publication</div>
+      <div className="container mx-auto px-4"></div>;
+    </div>
+  );
 };
 
 export default Publication;

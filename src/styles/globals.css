@@ -33,13 +33,13 @@ main {
 
 .logo img {
   width: 40px;
-  /* Adjust logo size */
   margin-right: 10px;
 }
 
 nav ul {
   list-style: none;
   display: flex;
+  margin: 0 !important;
 }
 
 nav ul li {
@@ -92,9 +92,268 @@ h2 {
   font-size: 20px;
 }
 
-p {
+.footer p {
   color: #bbb;
 }
+
+/* --------------------------Home page------------------------ */
+.authorHeader {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.authorHeader h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+
+.underline {
+  width: 50px;
+  height: 2px;
+  background-color: red;
+  margin: 10px auto;
+}
+
+.authorHeader p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.Authorcontainer {
+  display: flex;
+  background: #fff;
+  padding: 20px;
+
+
+  align-items: center;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  height: 450px;
+}
+
+.image-container img {
+  display: block;
+  width: 400px;
+  position: relative;
+  z-index: 2;
+  height: 95%;
+}
+
+.image-container::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -8px;
+  width: 80%;
+  height: 92%;
+  background: transparent;
+  border: 5px solid #635bff;
+  z-index: 1;
+}
+
+.content {
+  padding-left: 20px;
+  max-width: 600px;
+}
+
+.content h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.content p {
+  color: #555;
+  margin: 10px 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.list li::before {
+  content: '\2714';
+  /* Checkmark icon */
+  color: #6658d3;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.social-links {
+  margin-top: 10px;
+}
+
+.social-links a {
+  color: red;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+.about-company {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.about-content {
+  width: 50%;
+}
+
+.about-content h5 {
+  color: #ff6600;
+  margin-bottom: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.about-content h5:after {
+  content: "";
+  width: 34px;
+  height: 2px;
+  background-color: #fe0000;
+  margin-left: 9px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+.about-read-more {
+  background: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 8px 14px 0 rgba(254, 0, 0, .2);
+}
+
+.about-read-more a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.about-content-images {
+  width: 50%;
+  padding-left: 50px;
+  max-height: 500px;
+}
+
+.home_card_wrapper {
+  padding: 0 0 50px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.home_card {
+  width: 390px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+
+}
+
+.home_card img {
+  width: 100%;
+  height: 200px;
+}
+
+.home_card_content {
+  padding: 15px;
+}
+
+.home_card_category {
+  color: #ff6600;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home_card_category span {
+  margin-left: 5px;
+}
+
+.home_card_date {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.home_card_title {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.home_card_content a {
+  text-decoration: none;
+}
+
+.home_card_title h4 {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #000;
+}
+
+.home_card_title p {
+  color: #666;
+}
+
+.home_card_title a:hover {
+  color: #ff6600;
+}
+
+/* ------------------------------Banner------------------------ */
+.carouselconatiner {
+  width: 100%;
+  height: 500px;
+}
+
+.carouselconatiner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner_blog {
+  background: url("/images/mountain-bg-engine.webp") center center no-repeat;
+  background-size: cover;
+  padding: 100px 15px;
+  font-size: 60px;
+  text-align: center;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  width: 100%;
+  text-shadow: -1px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
 
 /* -------------------------blog --------------------------------- */
 
@@ -400,4 +659,20 @@ p {
 
 .expandable {
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .about-company {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .images {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .images img {
+    width: 100px;
+  }
 }
