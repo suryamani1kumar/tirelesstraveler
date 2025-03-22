@@ -124,14 +124,14 @@ export default function Home() {
               <Link href="/publication">READ MORE</Link>
             </button>
           </div>
-          {/* <div class="about-content-images">
+          <div class="about-content-images">
             <Image
               src="/images/tireless_traveler_cover-title.webp"
               alt="tireless_traveler_cover-title"
               height={0}
               width={0}
             />
-          </div> */}
+          </div>
         </section>
         <div className="home_card_wrapper">
           {Array(3)
