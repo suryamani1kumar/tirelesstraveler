@@ -152,9 +152,11 @@ export default function Home() {
             .fill(0)
             .map((item, i) => (
               <div class="home_card" key={i}>
-                <img
-                  src="/images/mountain-bg-engine.webp"
+                <Image
+                  src="/images/silk-road-trip.webp"
                   alt="Flight Cancellation"
+                  height={0}
+                  width={0}
                 />
                 <div class="home_card_content">
                   <Link href="/blog/asdsdas">
