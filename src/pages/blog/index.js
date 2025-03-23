@@ -8,9 +8,9 @@ const Blog = () => {
     <div>
       <div className="banner_blog">Blog</div>
       <div className="container mx-auto px-4">
-        <div className="flex justifty-sapce">
+        <div className="flex justifty-sapce bloglistcard">
           <div>
-            {Array(5)
+            {Array(4)
               .fill(0)
               .map((item, i) => (
                 <div className="blog-card" key={i}>
