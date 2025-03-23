@@ -16,8 +16,8 @@ const Blog = () => {
                 <div className="blog-card" key={i}>
                   <div className="blog-image">
                     <Image
-                      src="/images/piatra-craiului-national-park-romania.jpg"
-                      alt="piatra-craiului-national-park-romania"
+                      src="/images/silk-road-trip.webp"
+                      alt="silk-road-trip"
                       width={0}
                       height={0}
                     />
@@ -26,7 +26,7 @@ const Blog = () => {
                     <h2 className="blog-title">Trip to Italy: Rome</h2>
                     <p className="blog-meta">
                       <span className="icon">🏷️</span> POSTED IN EUROPE
-                      <span className="icon">👤</span> KATHY
+                      <span className="icon"> 👤</span>Arvi
                     </p>
                     <p className="blog-description">
                       This post is part of a series called Travel to Italy
@@ -48,7 +48,7 @@ const Blog = () => {
                 <img src="https://www.dummyimage.com/300" alt="Author Image" />
               </div>
               <h3 className="author-name">
-                HI THERE, I&apos;M <span className="highlight">KATHY</span>
+                HI THERE, I&apos;M <span className="highlight">Arvi</span>
               </h3>
               <p className="author-desc">
                 This blog will provide you many tested tips and advice about
@@ -78,8 +78,8 @@ const Blog = () => {
                   <div className="popular-post" key={i}>
                     <div className="postimgcontainer">
                       <Image
-                        src="/images/piatra-craiului-national-park-romania.jpg"
-                        alt="piatra-craiului-national-park-romania"
+                        src="/images/silk-road-trip.webp"
+                        alt="silk-road-trip"
                         width={0}
                         height={0}
                       />

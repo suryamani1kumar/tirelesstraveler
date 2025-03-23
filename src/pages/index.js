@@ -1,56 +1,71 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Carousel from 'react-bootstrap/Carousel';
+const banner = [
+  {
+    imageName: '/images/advanture.webp',
+    name: 'First slide label',
+    shortDescription:
+      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+  },
+  {
+    imageName: '/images/bali.webp',
+    name: 'First slide label',
+    shortDescription:
+      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+  },
+  {
+    imageName: '/images/antarctic_circle.webp',
+    name: 'First slide label',
+    shortDescription:
+      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+  },
+  {
+    imageName: '/images/galapagus_trip.webp',
+    name: 'First slide label',
+    shortDescription:
+      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+  },
+  {
+    imageName: '/images/guadalcanal_solomon_island.webp',
+    name: 'First slide label',
+    shortDescription:
+      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+  },
+  {
+    imageName: '/images/sahara_desert_maurutania.webp',
+    name: 'First slide label',
+    shortDescription:
+      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+  },
+  {
+    imageName: '/images/sony_stick_bull_run_trip.webp',
+    name: 'First slide label',
+    shortDescription:
+      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+  },
+];
 
 export default function Home() {
   return (
     <div>
       <Carousel>
-        <Carousel.Item>
-          <div className="carouselconatiner">
-            <Image
-              src="/images/mountain-bg-engine.webp"
-              alt="asdsadsas"
-              height={0}
-              width={0}
-            />
-          </div>
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="carouselconatiner">
-            <Image
-              src="/images/mountain-bg-engine.webp"
-              alt="asdsadsas"
-              height={0}
-              width={0}
-            />
-          </div>
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="carouselconatiner">
-            <Image
-              src="/images/mountain-bg-engine.webp"
-              alt="asdsadsas"
-              height={0}
-              width={0}
-            />
-          </div>
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
+        {banner.map((item, i) => (
+          <Carousel.Item key={i}>
+            <div className="carouselconatiner">
+              <Image
+                src={item.imageName}
+                alt="asdsadsas"
+                height={0}
+                width={0}
+              />
+            </div>
+            <Carousel.Caption>
+              <h3>{item.name}</h3>
+              <p>{item.shortDescription}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))}
       </Carousel>
       <div className="container mx-auto px-4">
         <div>
@@ -65,9 +80,11 @@ export default function Home() {
           </div>
           <div class="Authorcontainer">
             <div class="image-container">
-              <img
-                src="/images/mountain-bg-engine.webp"
+              <Image
+                src="/images/home_about.webp"
                 alt="Profile Picture"
+                height={0}
+                width={0}
               />
             </div>
             <div class="content">
@@ -87,10 +104,7 @@ export default function Home() {
                 <li>250,000 KM Traveled</li>
                 <li>15,000 Photos Taken</li>
               </ul>
-              <p class="social-links">
-                Reach Me on <a href="#">Twitter</a> or <a href="#">Facebook</a>{' '}
-                or <a href="#">LinkedIn</a>
-              </p>
+
               <button class="about-read-more">
                 <Link href="/about">READ MORE</Link>
               </button>
@@ -126,8 +140,8 @@ export default function Home() {
           </div>
           <div class="about-content-images">
             <Image
-              src="/images/tireless_traveler_cover-title.webp"
-              alt="tireless_traveler_cover-title"
+              src="/images/book-box-cover.webp"
+              alt="Profile Picture"
               height={0}
               width={0}
             />

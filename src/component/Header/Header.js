@@ -4,18 +4,17 @@ import Link from 'next/link';
 const Header = () => {
   return (
     <header className="sticky-header">
-      <div className="container mx-auto px-4 py-2 flexcontainer">
+      <div className="container mx-auto px-4 py-4 flexcontainer">
         <div className="logo">
-          <Image
-            src="https://www.dummyimage.com/300"
-            alt="TIRELESS TRAVELER Logo"
-            width={0}
-            height={0}
-          />
-          <span>TIRELESS TRAVELER</span>
+          <Link href="/">
+            <span>TIRELESS TRAVELER</span>
+          </Link>
         </div>
         <nav className="flexcontainer">
           <ul>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
             <li>
               <Link href="/blog">Blog</Link>
             </li>
