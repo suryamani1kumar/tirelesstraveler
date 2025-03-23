@@ -4,7 +4,7 @@ import Tab from 'react-bootstrap/Tab';
 const Publication = () => {
   return (
     <div>
-      <div className="banner_blog">Publication</div>
+      <div className="banner_blog">THE TIRELESS TRAVELER</div>
       <div className="container mx-auto px-4">
         <div className="product-container">
           <Image
@@ -15,8 +15,7 @@ const Publication = () => {
             width={0}
           />
           <div className="product-details">
-            <div className="product-title">THE TIRELESS TRAVELER</div>
-            <div>Author(s): Arvi Singh Bahal’s</div>
+            <div className="product-title">Author(s): Arvi Singh Bahal’s</div>
             <p>
               Arvi Singh Bahal’s journey reflects an unrelenting wanderlust and
               entrepreneurial drive. From immigrating to the U.S. in the 1970s
@@ -62,7 +61,6 @@ const Publication = () => {
           </Tab>
         </Tabs>
       </div>
-      ;
     </div>
   );
 };
