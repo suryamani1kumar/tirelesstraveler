@@ -6,7 +6,7 @@ import Link from 'next/link';
 const Blog = () => {
   return (
     <div>
-      <div class="banner_blog">Blog</div>
+      <div className="banner_blog">Blog</div>
       <div className="container mx-auto px-4">
         <div className="flex justifty-sapce">
           <div>
@@ -55,18 +55,18 @@ const Blog = () => {
                 traveling anywhere without spending a fortune
               </p>
             </div>
-            <div class="categories">CATEGORIES</div>
-            <ul class="category-list">
-              <li class="expandable">
+            <div className="categories">CATEGORIES</div>
+            <ul className="category-list">
+              <li className="expandable">
                 <i className="fa fa-chevron-right"></i>Europe
               </li>
-              <li class="expandable">
+              <li className="expandable">
                 <i className="fa fa-chevron-right"></i>Mountains
               </li>
-              <li class="expandable">
+              <li className="expandable">
                 <i className="fa fa-chevron-right"></i>Other
               </li>
-              <li class="expandable">
+              <li className="expandable">
                 <i className="fa fa-chevron-right"></i>Seas
               </li>
             </ul>

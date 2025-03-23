@@ -71,15 +71,15 @@ export default function Home() {
         <div>
           <div className="authorHeader">
             <h1>About the author</h1>
-            <div class="underline"></div>
+            <div className="underline"></div>
             <p>
               Arvinder (Arvi) Singh Bahal is an entrepreneur, explorer, and
               pilot who built global ventures and traveled to the world&apos;s
               most remote locations.
             </p>
           </div>
-          <div class="Authorcontainer">
-            <div class="image-container">
+          <div className="Authorcontainer">
+            <div className="image-container">
               <Image
                 src="/images/home_about.webp"
                 alt="Profile Picture"
@@ -87,7 +87,7 @@ export default function Home() {
                 width={0}
               />
             </div>
-            <div class="content">
+            <div className="content">
               <h1>Arvinder (Arvi) Singh Bahal</h1>
               <p>
                 Arvinder (Arvi) Singh Bahal, an entrepreneur and explorer, built
@@ -99,20 +99,20 @@ export default function Home() {
                 Sahara, and North Korea. Fluent in six languages, he lives in
                 Beverly, Massachusetts. This book is his writing debut.
               </p>
-              <ul class="list">
+              <ul className="list">
                 <li>4 Continents Explored, 30 Countries Visited</li>
                 <li>250,000 KM Traveled</li>
                 <li>15,000 Photos Taken</li>
               </ul>
 
-              <button class="about-read-more">
+              <button className="about-read-more">
                 <Link href="/about">READ MORE</Link>
               </button>
             </div>
           </div>
         </div>
-        <section class="about-company">
-          <div class="about-content">
+        <section className="about-company">
+          <div className="about-content">
             <h5>Publication</h5>
             <p>
               Arvinder (Arvi) Singh Bahal, born on October 13, 1945, in Agra,
@@ -134,11 +134,11 @@ export default function Home() {
               Pamela, and their two children and four grandchildren. This book
               marks his first writing effort, with more to come.
             </p>
-            <button class="about-read-more">
+            <button className="about-read-more">
               <Link href="/publication">READ MORE</Link>
             </button>
           </div>
-          <div class="about-content-images">
+          <div className="about-content-images">
             <Image
               src="/images/book-box-cover.webp"
               alt="Profile Picture"
@@ -151,21 +151,21 @@ export default function Home() {
           {Array(3)
             .fill(0)
             .map((item, i) => (
-              <div class="home_card" key={i}>
+              <div className="home_card" key={i}>
                 <Image
                   src="/images/silk-road-trip.webp"
                   alt="Flight Cancellation"
                   height={0}
                   width={0}
                 />
-                <div class="home_card_content">
+                <div className="home_card_content">
                   <Link href="/blog/asdsdas">
-                    <div class="home_card_category">
+                    <div className="home_card_category">
                       <div>Travel</div>
-                      <div class="home_card_date"> 21 Mar, 2025</div>
+                      <div className="home_card_date"> 21 Mar, 2025</div>
                     </div>
 
-                    <div class="home_card_title">
+                    <div className="home_card_title">
                       <h4>Lorem Ipsum is simply dummy</h4>
 
                       <p>

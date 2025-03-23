@@ -114,9 +114,9 @@ h2 {
 
 
 .underline {
-  width: 50px;
+  width: 150px;
   height: 2px;
-  background-color: red;
+  background-color: #f15757;
   margin: 10px auto;
 }
 
@@ -129,8 +129,6 @@ h2 {
 .Authorcontainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  background: #fff;
-  padding: 20px;
 
 }
 
@@ -226,18 +224,15 @@ h2 {
 }
 
 .about-read-more {
-  background: #ff6600;
-  color: white;
   padding: 10px 20px;
-  border: none;
+  border: 1px solid #ff6600;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
   box-shadow: 0 8px 14px 0 rgba(254, 0, 0, .2);
 }
 
 .about-read-more a {
-  color: #fff;
+  color: #000000;
   text-decoration: none;
 }
 
@@ -660,52 +655,44 @@ h2 {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
-  body {
-    font-size: 14px;
-  }
+/* -----------------publiser------------------- */
+.product-container {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: 20px;
+  padding: 50px 0;
 }
 
-@media only screen and (min-width: 600px) {
-  body {
-    font-size: 16px;
-  }
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  object-fit: fill;
 }
 
-@media only screen and (min-width: 768px) {
-  .container {
-    width: 90%;
-  }
+.product-details {
+  flex: 1;
 }
 
-@media only screen and (min-width: 992px) {
-  .container {
-    width: 80%;
-  }
+.product-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-@media only screen and (min-width: 1200px) {
-  .container {
-    width: 70%;
-  }
+.author {
+  color: #0073e6;
+  text-decoration: none;
 }
 
 @media (max-width: 991px) {
-  .about-company {
-    flex-direction: column;
-    text-align: center;
+  .product-container {
+    grid-template-columns: 1fr;
   }
+
+
 
   .stats-container {
     flex-direction: column;
-  }
-
-  .images {
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .images img {
-    width: 100px;
   }
 }
