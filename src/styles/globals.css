@@ -6,7 +6,7 @@
 }
 
 main {
-  margin-top: 60px;
+  margin-top: 75px;
 }
 
 /* -------------------------------Header------------------------------ */
@@ -653,6 +653,12 @@ h2 {
 }
 
 /* -----------------publiser------------------- */
+.publiservideo video {
+  width: 100% !important;
+  height: 600px !important;
+  padding: 50px;
+}
+
 .product-container {
   display: grid;
   grid-template-columns: 1.5fr 2fr;

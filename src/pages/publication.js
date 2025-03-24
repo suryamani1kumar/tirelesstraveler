@@ -60,6 +60,18 @@ const Publication = () => {
             </p>
           </Tab>
         </Tabs>
+        <div className="publiservideo">
+          <video
+            width="100%"
+            height="600"
+            controls
+            autoplay
+            muted
+            poster="/images/book-box-cover.webp"
+          >
+            <source src="/images/book_video.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </div>
   );
