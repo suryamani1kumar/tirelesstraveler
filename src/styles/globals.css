@@ -172,13 +172,7 @@ h2 {
   font-size: 16px;
 }
 
-.list li::before {
-  content: '\2714';
-  /* Checkmark icon */
-  color: #6658d3;
-  font-size: 18px;
-  margin-right: 10px;
-}
+
 
 .social-links {
   margin-top: 10px;
@@ -327,8 +321,6 @@ h2 {
 }
 
 .banner_blog {
-  background: url("/images/blog_banner.webp") center center no-repeat;
-  background-size: cover;
   padding: 150px 15px;
   font-size: 60px;
   text-align: center;
@@ -655,7 +647,6 @@ h2 {
 /* -----------------publiser------------------- */
 .publiservideo video {
   width: 100% !important;
-  height: 600px !important;
   padding: 50px;
 }
 

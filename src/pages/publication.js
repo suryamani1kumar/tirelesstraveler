@@ -4,7 +4,15 @@ import Tab from 'react-bootstrap/Tab';
 const Publication = () => {
   return (
     <div>
-      <div className="banner_blog">THE TIRELESS TRAVELER</div>
+      <div
+        className="banner_blog"
+        style={{
+          background: 'url(/images/blog_banner.webp) center center no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
+        THE TIRELESS TRAVELER
+      </div>
       <div className="container mx-auto px-4">
         <div className="product-container">
           <Image
@@ -66,7 +74,6 @@ const Publication = () => {
             height="600"
             controls
             autoplay
-            muted
             poster="/images/book-box-cover.webp"
           >
             <source src="/images/book_video.mp4" type="video/mp4" />

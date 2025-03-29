@@ -6,7 +6,15 @@ import Link from 'next/link';
 const Blog = () => {
   return (
     <div>
-      <div className="banner_blog">Blog</div>
+      <div
+        className="banner_blog"
+        style={{
+          background: 'url(/images/blog_banner.webp) center center no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
+        Blog
+      </div>
       <div className="container mx-auto px-4">
         <div className="flex justifty-sapce bloglistcard">
           <div>
