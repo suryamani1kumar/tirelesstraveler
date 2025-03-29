@@ -655,7 +655,6 @@ h2 {
 .publiservideo video {
   width: 100% !important;
   height: 80vh;
-  object-fit: cover;
 }
 
 .product-container {
