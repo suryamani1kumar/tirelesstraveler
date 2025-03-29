@@ -1,3 +1,4 @@
+import { useDeviceType } from '@/hook/useDeviceType';
 import Image from 'next/image';
 import Link from 'next/link';
 import Carousel from 'react-bootstrap/Carousel';
@@ -47,6 +48,7 @@ const banner = [
 ];
 
 export default function Home() {
+  const device = useDeviceType();
   return (
     <div>
       <Carousel>
@@ -60,10 +62,12 @@ export default function Home() {
                 width={0}
               />
             </div>
-            <Carousel.Caption>
-              <h3>{item.name}</h3>
-              <p>{item.shortDescription}</p>
-            </Carousel.Caption>
+            {device !== 'Mobile' && (
+              <Carousel.Caption>
+                <h3>{item.name}</h3>
+                <p>{item.shortDescription}</p>
+              </Carousel.Caption>
+            )}
           </Carousel.Item>
         ))}
       </Carousel>
