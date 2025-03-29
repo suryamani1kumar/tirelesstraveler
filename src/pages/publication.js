@@ -4,16 +4,17 @@ import Tab from 'react-bootstrap/Tab';
 const Publication = () => {
   return (
     <div>
-      <div
-        className="banner_blog"
-        style={{
-          background: 'url(/images/blog_banner.webp) center center no-repeat',
-          backgroundSize: 'cover',
-        }}
-      >
-        THE TIRELESS TRAVELER
-      </div>
       <div className="container mx-auto px-4">
+        <div className="publiservideo">
+          <video
+            width="100%"
+            controls
+            autoplay
+            poster="/images/book-box-cover.webp"
+          >
+            <source src="/images/book_video.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div className="product-container">
           <Image
             src="/images/ab-bahal-cover.webp"
@@ -68,17 +69,6 @@ const Publication = () => {
             </p>
           </Tab>
         </Tabs>
-        <div className="publiservideo">
-          <video
-            width="100%"
-            height="600"
-            controls
-            autoplay
-            poster="/images/book-box-cover.webp"
-          >
-            <source src="/images/book_video.mp4" type="video/mp4" />
-          </video>
-        </div>
       </div>
     </div>
   );
