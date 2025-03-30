@@ -746,6 +746,18 @@ h2 {
   .image-container {
     height: 442px;
   }
+
+  .about-company {
+    flex-direction: column-reverse;
+  }
+
+  .about-content-images {
+    max-height: 400px;
+  }
+
+  .about-content-images img {
+    height: 400px;
+  }
 }
 
 /* Desktop (1024px and above) */

@@ -1,3 +1,4 @@
+import HomeCard from '@/component/BlogCard';
 import { useDeviceType } from '@/hook/useDeviceType';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -156,7 +157,7 @@ export default function Home() {
             />
           </div>
         </section>
-        <div className="home_card_wrapper">
+        {/* <div className="home_card_wrapper">
           {Array(4)
             .fill(0)
             .map((item, i) => (
@@ -186,7 +187,8 @@ export default function Home() {
                 </div>
               </div>
             ))}
-        </div>
+        </div> */}
+        <HomeCard/>
       </div>
     </div>
   );
