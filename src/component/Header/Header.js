@@ -41,9 +41,6 @@ const Header = () => {
                 <Link href="/about">About</Link>
               </li>
             </ul>
-            <div className="search-icon">
-              <i className="fa fa-search"></i>
-            </div>
           </nav>
         ) : (
           <div onClick={handleShow}>

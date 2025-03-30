@@ -92,7 +92,7 @@ export default function Home() {
               />
             </div>
             <div className="content">
-              <h1>Arvinder (Arvi) Singh Bahal</h1>
+              <h2>Arvinder  Singh Bahal</h2>
               <p>
                 Arvinder (Arvi) Singh Bahal, an entrepreneur and explorer, built
                 successful ventures in fashion, hospitality, and real estate
@@ -104,9 +104,9 @@ export default function Home() {
                 Beverly, Massachusetts. This book is his writing debut.
               </p>
               <ul className="list">
-                <li>4 Continents Explored, 30 Countries Visited</li>
-                <li>250,000 KM Traveled</li>
-                <li>15,000 Photos Taken</li>
+                <li><i className="fa fa-check"></i>4 Continents Explored, 30 Countries Visited</li>
+                <li><i className="fa fa-check"></i>250,000 KM Traveled</li>
+                <li><i className="fa fa-check"></i>15,000 Photos Taken</li>
               </ul>
 
               <button className="about-read-more">
@@ -115,9 +115,14 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div className="aboutHeader">
+          <h5>About the Book</h5>
+          <div class="underline"></div>
+        </div>
         <section className="about-company">
           <div className="about-content">
-            <h5>Publication</h5>
+
             <p>
               Arvinder (Arvi) Singh Bahal, born on October 13, 1945, in Agra,
               India, is a successful entrepreneur and avid explorer. He
@@ -152,7 +157,7 @@ export default function Home() {
           </div>
         </section>
         <div className="home_card_wrapper">
-          {Array(3)
+          {Array(4)
             .fill(0)
             .map((item, i) => (
               <div className="home_card" key={i}>
@@ -174,8 +179,7 @@ export default function Home() {
 
                       <p>
                         Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry&apos;s
+                        typesetting industry.
                       </p>
                     </div>
                   </Link>
