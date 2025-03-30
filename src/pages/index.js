@@ -157,37 +157,6 @@ export default function Home() {
             />
           </div>
         </section>
-        {/* <div className="home_card_wrapper">
-          {Array(4)
-            .fill(0)
-            .map((item, i) => (
-              <div className="home_card" key={i}>
-                <Image
-                  src="/images/silk-road-trip.webp"
-                  alt="Flight Cancellation"
-                  height={0}
-                  width={0}
-                />
-                <div className="home_card_content">
-                  <Link href="/blog/asdsdas">
-                    <div className="home_card_category">
-                      <div>Travel</div>
-                      <div className="home_card_date"> 21 Mar, 2025</div>
-                    </div>
-
-                    <div className="home_card_title">
-                      <h4>Lorem Ipsum is simply dummy</h4>
-
-                      <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            ))}
-        </div> */}
         <HomeCard/>
       </div>
     </div>

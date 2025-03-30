@@ -1,151 +1,158 @@
 .carousel_container {
-    position: relative;
-    margin-bottom: 50px;
-    .swiperRootContainer {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      gap: 20px;
-      .wrapper {
-        display: flex;
-        flex-wrap: nowrap;
-        .card {
-          flex: 0 0 auto;
-          width: 250px;
-          background: white;
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          overflow: hidden;
-          transition: transform 0.3s ease-in-out;
-          margin: 10px;
-          a{
-            text-decoration: none;
-          }
-          .card__img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-          }
-  
-          .card__body {
-            padding: 15px;
-          }
-  
-          .card__title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-          }
-  
-          .card__description {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 10px;
-          }
-  
-          .card_read {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-          }
-  
-          .readMore {
-            color: red;
-            cursor: pointer;
-            font-weight: bold;
-          }
-  
-          .card_releaseDate {
-            display: flex;
-            align-items: center;
-          }
-  
-          .card_releaseDate svg {
-            margin-right: 5px;
-          }
-        }
-        .card:first-child {
-          margin-left: 0;
-        }
-  
-        .card:last-child {
-          margin-right: 0;
-        }
-      }
-    }
-    .swiperRootContainer::-webkit-scrollbar {
-      display: none;
-      /* Hide scrollbar for Webkit browsers */
-    }
-  }
-  
-  .carousel_button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    border: none;
+  position: relative;
+  margin-bottom: 50px;
+
+  .swiperRootContainer {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    position: absolute;
-    top:-40px;
- 
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+
+    .wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+
+      .card {
+        flex: 0 0 auto;
+        width: 250px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+        margin: 10px;
+
+        a {
+          text-decoration: none;
+        }
+
+        .card__img {
+          width: 100%;
+          height: 150px;
+          object-fit: cover;
+        }
+
+        .card__body {
+          padding: 15px;
+        }
+
+        .card__title {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: #555;
+        }
+
+        .card__description {
+          font-size: 14px;
+          color: #555;
+          margin-bottom: 10px;
+        }
+
+        .card_read {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 14px;
+        }
+
+        .readMore {
+          cursor: pointer;
+          font-weight: bold;
+        }
+
+        .card_releaseDate {
+          display: flex;
+          align-items: center;
+          color: #555;
+        }
+      }
+
+      .card:first-child {
+        margin-left: 0;
+      }
+
+      .card:last-child {
+        margin-right: 0;
+      }
     }
   }
-  
-  .right_carousel_button {
-    right: -15px;
+
+  .swiperRootContainer::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for Webkit browsers */
   }
-  
-  .left_carousel_button {
-    left: -20px;
+}
+
+.carousel_button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: absolute;
+  top: -40px;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   }
-  
-  .carousel_button .arrow {
-    font-size: 24px;
-    color: black;
-  }
-  
-  /* 2. Tablet (768px - 1024px) */
-  @media screen and (min-width: 768px) {
-    .carousel_container {
-      .swiperRootContainer {
-        .wrapper {
-          .card {
-            width: 270px;
-            .card__img {
-              height: 175px;
-            }
+}
+
+.right_carousel_button {
+  right: -15px;
+}
+
+.left_carousel_button {
+  left: -20px;
+}
+
+.carousel_button .arrow {
+  font-size: 24px;
+  color: black;
+}
+
+/* 2. Tablet (768px - 1024px) */
+@media screen and (min-width: 768px) {
+  .carousel_container {
+    .swiperRootContainer {
+      .wrapper {
+        .card {
+          width: 270px;
+
+          .card__img {
+            height: 175px;
           }
         }
       }
     }
-    .carousel_button {
-      top: 45%;
-      .left_carousel_button {
-        left: 0px;
-        right: 10px;
-      }
+  }
+
+  .carousel_button {
+    top: 45%;
+
+    .left_carousel_button {
+      left: 0px;
+      right: 10px;
     }
   }
-  
-  /* 3. Laptop & Desktop (1025px and above) */
-  @media screen and (min-width: 1025px) {
-    .carousel_container {
-      .swiperRootContainer {
-        .wrapper {
-          .card {
-            width: 300px;
-          }
+}
+
+/* 3. Laptop & Desktop (1025px and above) */
+@media screen and (min-width: 1025px) {
+  .carousel_container {
+    .swiperRootContainer {
+      .wrapper {
+        .card {
+          width: 300px;
         }
       }
     }
   }
+}
