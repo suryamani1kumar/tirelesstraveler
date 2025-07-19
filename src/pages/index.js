@@ -1,50 +1,36 @@
-import HomeCard from '@/component/BlogCard';
-import { useDeviceType } from '@/hook/useDeviceType';
-import Image from 'next/image';
-import Link from 'next/link';
-import Carousel from 'react-bootstrap/Carousel';
+import HomeCard from "@/component/BlogCard";
+import { useDeviceType } from "@/hook/useDeviceType";
+import Image from "next/image";
+import Link from "next/link";
+import Carousel from "react-bootstrap/Carousel";
 const banner = [
   {
-    imageName: '/images/advanture.webp',
-    name: 'First slide label',
-    shortDescription:
-      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+    imageName: "/images/advanture.webp",
+    name: "Sky Dive Pyramid Giza, Egypt.",
   },
   {
-    imageName: '/images/bali.webp',
-    name: 'First slide label',
-    shortDescription:
-      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+    imageName: "/images/bali.webp",
+    name: "Bali, Indonesia",
   },
   {
-    imageName: '/images/antarctic_circle.webp',
-    name: 'First slide label',
-    shortDescription:
-      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+    imageName: "/images/antarctic_circle.webp",
+    name: "McMurdo Station, Antartica",
   },
   {
-    imageName: '/images/galapagus_trip.webp',
-    name: 'First slide label',
-    shortDescription:
-      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+    imageName: "/images/galapagus_trip.webp",
+    name: "Charles Darwin Station, Galapagos",
   },
   {
-    imageName: '/images/guadalcanal_solomon_island.webp',
-    name: 'First slide label',
-    shortDescription:
-      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+    imageName: "/images/guadalcanal_solomon_island.webp",
+    name: "The Guadalcanal American Memorial",
   },
   {
-    imageName: '/images/sahara_desert_maurutania.webp',
-    name: 'First slide label',
-    shortDescription:
-      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+    imageName: "/images/sahara_desert_maurutania.webp",
+    name: "Camping at Sahara Desert",
   },
   {
-    imageName: '/images/sony_stick_bull_run_trip.webp',
-    name: 'First slide label',
-    shortDescription:
-      'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+    imageName: "/images/sony_stick_bull_run_trip.webp",
+    name: "Running with Bulls at Pamplona, Italy",
   },
 ];
 
@@ -64,10 +50,9 @@ export default function Home() {
               />
             </div>
 
-            {device !== 'Mobile' && (
+            {device !== "Mobile" && (
               <Carousel.Caption>
                 <h3>{item.name}</h3>
-                <p>{item.shortDescription}</p>
               </Carousel.Caption>
             )}
           </Carousel.Item>

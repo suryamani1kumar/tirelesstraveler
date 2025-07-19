@@ -1,0 +1,136 @@
+.bookDetailContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  margin-bottom: 15px;
+
+  a {
+    text-decoration: none;
+    color: #007bff;
+  }
+}
+
+.bookMain {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.bookImage {
+  width: 250px;
+
+  img {
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+}
+
+.sampleLink {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.bookInfo {
+  flex: 1;
+  min-width: 300px;
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .edition {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .available {
+    color: green;
+    font-weight: bold;
+  }
+}
+
+.ebookOptions {
+  margin: 15px 0;
+
+  button {
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 4px;
+
+    &.activeTab {
+      background-color: #2a2a72;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+
+.priceInfo {
+  p {
+    margin-top: 15px;
+    font-weight: 500;
+  }
+}
+
+.buttons {
+  margin-top: 10px;
+
+  button {
+    background-color: #2a2a72;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+
+  button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &.activeTab {
+      background-color: #2a2a72;
+      color: white;
+      border-color: #2a2a72;
+    }
+  }
+}
+
+.descriptionText {
+  background-color: #fafafa;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  line-height: 1.6;
+}
+

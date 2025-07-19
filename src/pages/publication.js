@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
+import BookDetail from '@/component/Book/BookDetail';
 const Publication = () => {
   return (
     <div>
       <div className="container mx-auto px-4">
+        <BookDetail/>
         <div className="publiservideo">
           <video
             width="100%"

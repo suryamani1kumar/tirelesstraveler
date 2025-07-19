@@ -5,15 +5,15 @@ const Footer = () => {
         <div className="stats-container">
           <div className="stat">
             <i className="fa fa-globe"></i>
-            <h2>4 Continents</h2>
+            <h2>7 Continents</h2>
             <p>Explored</p>
           </div>
           <div className="stat">
             <i className="fa fa-plane"></i>
-            <h2>30 Countries</h2>
+            <h2>196 Countries</h2>
             <p>Visited</p>
           </div>
-          <div className="stat">
+          {/* <div className="stat">
             <i className="fa fa-globe"></i>
             <h2>250,000 KM</h2>
             <p>Traveled</p>
@@ -22,7 +22,7 @@ const Footer = () => {
             <i className="fa fa-image"></i>
             <h2>15,000 Photos</h2>
             <p>Taken</p>
-          </div>
+          </div> */}
         </div>
       </div>
       <p className="py-4 text-center">
