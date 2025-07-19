@@ -1,15 +1,15 @@
-import Image from 'next/image';
+import Image from "next/image";
 const About = () => {
   return (
     <div>
       <div
         className="banner_blog"
         style={{
-          background: 'url(/images/blog_banner.webp) center center no-repeat',
-          backgroundSize: 'cover',
+          background: "url(/images/blog_banner.webp) center center no-repeat",
+          backgroundSize: "cover",
         }}
       >
-        About: Arvi Singh Bahal’s
+        Arvinder Singh Bahal (Arvi)
       </div>
       <div className="container mx-auto px-4">
         <div className="product-container">

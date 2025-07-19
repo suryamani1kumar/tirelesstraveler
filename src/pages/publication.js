@@ -1,75 +1,10 @@
-import Image from 'next/image';
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
-import BookDetail from '@/component/Book/BookDetail';
+
+import BookDetail from "@/component/Book/BookDetail";
 const Publication = () => {
   return (
     <div>
       <div className="container mx-auto px-4">
-        <BookDetail/>
-        <div className="publiservideo">
-          <video
-            width="100%"
-            controls
-            autoplay
-            poster="/images/book-box-cover.webp"
-          >
-            <source src="/images/book_video.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="product-container">
-          <Image
-            src="/images/ab-bahal-cover.webp"
-            alt="Book Cover"
-            className="product-image"
-            height={0}
-            width={0}
-          />
-          <div className="product-details">
-            <div className="product-title">Author(s): Arvi Singh Bahal’s</div>
-            <p>
-              Arvi Singh Bahal’s journey reflects an unrelenting wanderlust and
-              entrepreneurial drive. From immigrating to the U.S. in the 1970s
-              with just $108 to building successful businesses in apparel and
-              real estate, he transformed work-related travel into a lifelong
-              quest. Visiting all 193 UN countries by 2023, he has explored over
-              two hundred territories using diverse modes, from freight trains
-              to dog sleds, accumulating over three million miles of travel.
-            </p>
-
-            <p>
-              A passionate photographer with an archive of one million images,
-              Arvi documents both iconic landmarks and hidden gems. As “Future
-              Astronaut No. 326” with Virgin Galactic, his spirit of exploration
-              extends beyond Earth. Whether navigating polar extremes or
-              capturing cultural landscapes, his adventures highlight the
-              resilience of humanity and the boundless wonders of our world.
-            </p>
-          </div>
-        </div>
-        <Tabs defaultActiveKey="Product Description">
-          <Tab eventKey="Product Description" title="Product Description">
-            <p style={{padding:"10px"}}>
-              Arvi Singh Bahal’s journey reflects an unrelenting wanderlust and
-              entrepreneurial drive. From immigrating to the U.S. in the 1970s
-              with just $108 to building successful businesses in apparel and
-              real estate, he transformed work-related travel into a lifelong
-              quest. Visiting all 193 UN countries by 2023, he has explored over
-              two hundred territories using diverse modes, from freight trains
-              to dog sleds, accumulating over three million miles of travel.
-            </p>
-          </Tab>
-          <Tab eventKey="Table of Contents" title="Table of Contents">
-            <p style={{padding:"10px"}}>
-              A passionate photographer with an archive of one million images,
-              Arvi documents both iconic landmarks and hidden gems. As “Future
-              Astronaut No. 326” with Virgin Galactic, his spirit of exploration
-              extends beyond Earth. Whether navigating polar extremes or
-              capturing cultural landscapes, his adventures highlight the
-              resilience of humanity and the boundless wonders of our world.
-            </p>
-          </Tab>
-        </Tabs>
+        <BookDetail />
       </div>
     </div>
   );
