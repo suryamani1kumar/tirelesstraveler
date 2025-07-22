@@ -6,9 +6,9 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 
 // Load flipbook component on client only
-const FlipBookPDF = dynamic(() => import("../pdf"), {
-  ssr: false,
-});
+// const FlipBookPDF = dynamic(() => import("../pdf"), {
+//   ssr: false,
+// });
 
 const BookDetail = () => {
   return (
