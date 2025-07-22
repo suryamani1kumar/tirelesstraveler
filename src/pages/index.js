@@ -92,15 +92,13 @@ export default function Home() {
               </p>
               <ul className="list">
                 <li>
-                  <i className="fa fa-check"></i>4 Continents Explored, 30
+                  <i className="fa fa-check"></i>7 Continents Explored,
+                </li>
+                <li>
+                  <i className="fa fa-check"></i>196
                   Countries Visited
                 </li>
-                <li>
-                  <i className="fa fa-check"></i>250,000 KM Traveled
-                </li>
-                <li>
-                  <i className="fa fa-check"></i>15,000 Photos Taken
-                </li>
+               
               </ul>
 
               <button className="about-read-more">
