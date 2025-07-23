@@ -11,6 +11,25 @@ import dynamic from "next/dynamic";
 // });
 
 const BookDetail = () => {
+   const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Publiction", // Or a custom title
+          text: "Check out this awesome page!", // Or custom text
+          url: "https://www.google.com/", // The URL to share
+        });
+        console.log("Content shared successfully");
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      alert(
+        "Web Share API is not supported in this browser. You can manually copy the URL."
+      );
+    }
+  };
   return (
     <div className={styles.bookDetailContainer}>
       <nav className={styles.breadcrumb}>
@@ -38,6 +57,7 @@ const BookDetail = () => {
           <p>
             Price <strong>$ 50.00</strong>
           </p>
+            <button onClick={handleShare}>Share Page</button>
           <div className={styles.ebookOptions}>
             <button className={styles.activeTab}>EBOOK (PDF)</button>
             <button>Buy Now</button>
