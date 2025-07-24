@@ -11,7 +11,7 @@ import dynamic from "next/dynamic";
 // });
 
 const BookDetail = () => {
-   const handleShare = async () => {
+  const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
@@ -57,33 +57,10 @@ const BookDetail = () => {
           <p>
             Price <strong>$ 50.00</strong>
           </p>
-            <button onClick={handleShare}>Share Page</button>
+          <button onClick={handleShare}>Share Page</button>
           <div className={styles.ebookOptions}>
             <button className={styles.activeTab}>EBOOK (PDF)</button>
             <button>Buy Now</button>
-            {/* <form
-              action="https://www.paypal.com/cgi-bin/webscr"
-              method="post"
-              target="_blank"
-            >
-              <input type="hidden" name="cmd" value="_xclick" />
-              <input
-                type="hidden"
-                name="business"
-                value="arvibahal@comcast.net"
-              />
-              <input type="hidden" name="item_name" value="tirelesstraveler" />
-              <input type="hidden" name="amount" value="1.00" />
-              <input type="hidden" name="currency_code" value="USD" />
-
-              <input
-                type="image"
-                src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-                border="0"
-                name="submit"
-                alt="PayPal - The safer, easier way to pay online!"
-              />
-            </form> */}
           </div>
         </div>
       </div>
@@ -129,7 +106,7 @@ const BookDetail = () => {
           </video>
         </Tab>
       </Tabs>
-      
+
       {/* <FlipBookPDF url="/images/suryamani_kumar_cv_july_2025.pdf" /> */}
     </div>
   );
