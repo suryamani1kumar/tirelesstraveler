@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Tabs, Tab } from "react-bootstrap";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-
 // Load flipbook component on client only
 // const FlipBookPDF = dynamic(() => import("../pdf"), {
 //   ssr: false,
@@ -15,11 +14,20 @@ const BookDetail = () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Publiction", // Or a custom title
-          text: "Check out this awesome page!", // Or custom text
-          url: "https://www.google.com/", // The URL to share
+          title: `A passionate photographer with an archive of one million images,
+            Arvi documents both iconic landmarks and hidden gems. As “Future
+            Astronaut No. 326” with Virgin Galactic, his spirit of exploration
+            extends beyond Earth. Whether navigating polar extremes or capturing
+            cultural landscapes, his adventures highlight the resilience of
+            humanity and the boundless wonders of our world.`, // Or a custom title
+          text: `A passionate photographer with an archive of one million images,
+            Arvi documents both iconic landmarks and hidden gems. As “Future
+            Astronaut No. 326” with Virgin Galactic, his spirit of exploration
+            extends beyond Earth. Whether navigating polar extremes or capturing
+            cultural landscapes, his adventures highlight the resilience of
+            humanity and the boundless wonders of our world.`, // Or custom text
+          url: "https://www.tirelesstraveler.net/publication", // The URL to share
         });
-        console.log("Content shared successfully");
       } catch (error) {
         console.error("Error sharing:", error);
       }
@@ -54,13 +62,12 @@ const BookDetail = () => {
           Email:{" "}
           <Link href={"mailto:arvibahal@gmail.com"}>arvibahal@gmail.com</Link>
           <p></p>
-          <p>
-            Price <strong>$ 50.00</strong>
-          </p>
-          <button onClick={handleShare}>Share Page</button>
+          <button onClick={handleShare}>
+            <i className="fa fa-share-alt"></i>
+          </button>
           <div className={styles.ebookOptions}>
-            <button className={styles.activeTab}>EBOOK (PDF)</button>
-            <button>Buy Now</button>
+            <button>EBOOK (PDF) $ 35.00</button>
+            <button>Hardcover $ 100.00</button>
           </div>
         </div>
       </div>
