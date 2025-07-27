@@ -9,7 +9,15 @@ import dynamic from "next/dynamic";
 //   ssr: false,
 // });
 
+const img = [
+  "/images/book-box-cover.webp",
+  "/images/ab-bahal-cover.webp",
+  "/images/book_inside.webp",
+  "/images/book_inside_1.webp",
+];
+
 const BookDetail = () => {
+  const [imageChange, setImageChnage] = useState("/images/book-box-cover.webp");
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -46,12 +54,29 @@ const BookDetail = () => {
 
       <div className={styles.bookMain}>
         <div className={styles.bookImage}>
-          <Image
-            src="/images/book-box-cover.webp" // Place this image in your public folder or use an online URL
-            alt="Comprehensive Guide to IBC"
-            width={0}
-            height={300}
-          />
+          <div>
+            <Image
+              src={imageChange}
+              alt={imageChange.replace("/images/", "")}
+              width={0}
+              height={250}
+            />
+          </div>
+          <div className={styles.smallImage}>
+            {img.map((item, i) => (
+              <Image
+                src={item}
+                alt={item.replace("/images/", "")}
+                width={40}
+                height={40}
+                key={i + 1}
+                onMouseOver={() => setImageChnage(item)}
+                onMouseLeave={() =>
+                  setImageChnage("/images/book-box-cover.webp")
+                }
+              />
+            ))}
+          </div>
         </div>
 
         <div className={styles.bookInfo}>
@@ -59,15 +84,24 @@ const BookDetail = () => {
           <p>
             <strong>Author(s):</strong> Arvinder Singh Bahal (Arvi)
           </p>
-          Email:{" "}
-          <Link href={"mailto:arvibahal@gmail.com"}>arvibahal@gmail.com</Link>
-          <p></p>
+
+          <p>
+            Email:{" "}
+            <Link href={"mailto:arvibahal@gmail.com"}>arvibahal@gmail.com</Link>
+          </p>
           <button onClick={handleShare}>
-            <i className="fa fa-share-alt"></i>
+            Share: <i className="fa fa-share-alt"></i>
           </button>
           <div className={styles.ebookOptions}>
-            <button>EBOOK (PDF) $ 35.00</button>
-            <button>Hardcover $ 100.00</button>
+            <div>
+              <button>EBOOK (PDF) $ 35.00</button>
+            </div>
+            <div>
+              <button>Hardcover $ 100.00</button>
+            </div>
+          </div>
+          <div>
+            <i className="fa-brands fa-facebook"></i>
           </div>
         </div>
       </div>
