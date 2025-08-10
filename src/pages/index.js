@@ -40,10 +40,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>tirelesstraveler </title>
+        <title>The Tireless Traveler </title>
         <meta name="Content-Language" content="EN" />
-        <meta name="keywords" content="tirelesstraveler" />
-        <meta name="description" content="tirelesstraveler" />
+        <meta name="keywords" content="The Tireless Traveler" />
+        <meta name="description" content="The Tireless Traveler" />
         <link
           rel="canonical"
           href="https://www.tirelesstraveler.net/"

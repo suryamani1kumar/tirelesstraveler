@@ -4,7 +4,7 @@ const Publication = () => {
   return (
     <>
       <Head>
-        <title>tirelesstraveler publication</title>
+        <title>The Tireless Traveler</title>
 
         {/* Basic SEO */}
         <meta name="Content-Language" content="EN" />

@@ -3,11 +3,6 @@ import styles from "./book.module.scss";
 import Link from "next/link";
 import { Tabs, Tab } from "react-bootstrap";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-// Load flipbook component on client only
-// const FlipBookPDF = dynamic(() => import("../pdf"), {
-//   ssr: false,
-// });
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -90,7 +85,6 @@ const BookDetail = () => {
           <p>
             <strong>Author(s):</strong> Arvinder Singh Bahal (Arvi)
           </p>
-
           <p>
             Email:{" "}
             <Link href={"mailto:arvibahal@gmail.com"}>arvibahal@gmail.com</Link>
@@ -127,7 +121,9 @@ const BookDetail = () => {
 
           <div className={styles.ebookOptions}>
             <div>
-              <button>EBOOK (PDF) $ 35.00</button>
+              <button>
+                <Link href={"/flip-book/tire-less-traveler-ebook.html"}>EBOOK (PDF) $ 35.00</Link>
+              </button>
             </div>
             <div>
               <button>Hardcover $ 100.00</button>
@@ -177,8 +173,6 @@ const BookDetail = () => {
           </video>
         </Tab>
       </Tabs>
-
-      {/* <FlipBookPDF url="/images/suryamani_kumar_cv_july_2025.pdf" /> */}
     </div>
   );
 };
