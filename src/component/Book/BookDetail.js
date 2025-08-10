@@ -8,6 +8,12 @@ import dynamic from "next/dynamic";
 // const FlipBookPDF = dynamic(() => import("../pdf"), {
 //   ssr: false,
 // });
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faLinkedin,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 const img = [
   "/images/book-box-cover.webp",
@@ -89,9 +95,36 @@ const BookDetail = () => {
             Email:{" "}
             <Link href={"mailto:arvibahal@gmail.com"}>arvibahal@gmail.com</Link>
           </p>
-          <button onClick={handleShare}>
-            Share: <i className="fa fa-share-alt"></i>
-          </button>
+          <div style={{ display: "flex", gap: "10px", fontSize: "24px" }}>
+            <a
+              href="https://www.facebook.com/arvibahal"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faFacebook} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/arvinder-bahal-24242519"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            <button
+              onClick={handleShare}
+              style={{ fontSize: "14px", color: "#3585da" }}
+            >
+              <i className="fa fa-share-alt"></i>
+            </button>
+          </div>
+
           <div className={styles.ebookOptions}>
             <div>
               <button>EBOOK (PDF) $ 35.00</button>
@@ -99,9 +132,6 @@ const BookDetail = () => {
             <div>
               <button>Hardcover $ 100.00</button>
             </div>
-          </div>
-          <div>
-            <i className="fa-brands fa-facebook"></i>
           </div>
         </div>
       </div>
