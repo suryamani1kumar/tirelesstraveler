@@ -122,7 +122,7 @@ const BookDetail = () => {
           <div className={styles.ebookOptions}>
             <div>
               <button>
-                <Link href={"/flip-book/tire-less-traveler-ebook.html"}>EBOOK (PDF) $ 35.00</Link>
+                <Link href={"/flip-book/the-tireless-traveler-ebook.html"}>EBOOK (PDF) $ 35.00</Link>
               </button>
             </div>
             <div>
