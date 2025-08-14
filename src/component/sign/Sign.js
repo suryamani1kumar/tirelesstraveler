@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 const Sign = (formConfig) => {
-  return (props) => {
+  return function SignModal(props){
     const { open, handleClose, onSumbit } = props;
     const [formData, setFormData] = useState(
       formConfig.reduce((acc, field) => {
