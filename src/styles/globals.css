@@ -44,7 +44,6 @@ main {
   color: #9a9999;
 }
 
-
 nav ul {
   list-style: none;
   display: flex;
@@ -53,13 +52,15 @@ nav ul {
 
 nav ul li {
   margin: 0 15px;
+  color: #9a9999;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 nav ul li a {
   text-decoration: none;
   color: #9a9999;
-  font-size: 16px;
-  font-weight: bold;
   transition: color 0.3s;
 }
 
@@ -134,7 +135,6 @@ h2 {
 .Authorcontainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
 }
 
 .image-container {
@@ -167,8 +167,6 @@ h2 {
   list-style: none;
   padding: 0;
 }
-
-
 
 .list li {
   display: flex;
@@ -255,7 +253,6 @@ h2 {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-
 }
 
 .home_card img {
@@ -334,12 +331,10 @@ h2 {
   text-shadow: -1px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
-
 /* -------------------------blog --------------------------------- */
 .bloglistcard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
 }
 
 .author-card {
@@ -389,7 +384,6 @@ h2 {
   font-weight: bold;
   margin: 10px 0;
 }
-
 
 .highlight {
   color: #000;
@@ -465,7 +459,6 @@ h2 {
 
 .popular-posts {
   max-width: 300px;
-
 }
 
 .popular-posts h2 {
@@ -680,13 +673,11 @@ h2 {
 /* Mobile (up to 767px) */
 @media (max-width: 767px) {
   .carouselconatiner {
-
     height: 250px;
   }
 
   .publiservideo video {
     height: 200px;
-
   }
 
   .authorHeader {
@@ -701,7 +692,7 @@ h2 {
   }
 
   .content {
-    padding-left: 0
+    padding-left: 0;
   }
 
   .content h2 {
@@ -732,14 +723,12 @@ h2 {
 
   .about-content p {
     font-size: 15px;
-
   }
 }
 
 /* Tablet (768px to 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .carouselconatiner {
-
     height: 350px;
   }
 
@@ -773,7 +762,6 @@ h2 {
   }
 
   .home_card_wrapper {
-
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 
@@ -795,6 +783,7 @@ h2 {
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 18px;
+    color: #999;
   }
 
   .slidenav-url-group li a {
