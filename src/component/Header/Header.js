@@ -62,7 +62,6 @@ const Header = () => {
   }, [router]);
 
   const signInSubmit = async (userdata) => {
-    console.log(userdata);
     try {
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/signIn`,

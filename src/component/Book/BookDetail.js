@@ -9,6 +9,7 @@ import {
   faLinkedin,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import PaypalPayment from "../paypal/PaypalPayment";
 
 const img = [
   "/images/book-box-cover.webp",
@@ -122,9 +123,11 @@ const BookDetail = () => {
           <div className={styles.ebookOptions}>
             <div>
               <button>EBOOK (PDF) $ 35.00</button>
-            </div>
-            <div>
               <button>Hardcover $ 100.00</button>
+            </div>
+
+            <div>
+              <PaypalPayment />
             </div>
           </div>
         </div>
