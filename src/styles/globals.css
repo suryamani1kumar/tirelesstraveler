@@ -784,6 +784,7 @@ h2 {
     padding-bottom: 10px;
     font-size: 18px;
     color: #999;
+    cursor: pointer;
   }
 
   .slidenav-url-group li a {

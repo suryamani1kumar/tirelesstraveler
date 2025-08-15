@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Sign from "../sign/Sign";
+import axios from "axios";
 
 const signConfig = [
   {
@@ -60,11 +61,37 @@ const Header = () => {
     };
   }, [router]);
 
-  const signInSubmit = (data) => {
-    console.log(data);
+  const signInSubmit = async (userdata) => {
+    console.log(userdata);
+    try {
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/signIn`,
+        userdata
+      );
+      router.push("/flip-book/the-tireless-traveler-ebook.html");
+      console.log("data", data);
+    } catch (error) {
+      if (error.response) {
+        console.error("Error:", error.response.data);
+      } else {
+        console.error("Error:", error.message);
+      }
+    }
   };
-  const signUpSubmit = (data) => {
-    console.log(data);
+  const signUpSubmit = async (userdata) => {
+    try {
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/signUp`,
+        userdata
+      );
+      console.log("data", data);
+    } catch (error) {
+      if (error.response) {
+        console.error("Error:", error.response.data);
+      } else {
+        console.error("Error:", error.message);
+      }
+    }
   };
 
   return (

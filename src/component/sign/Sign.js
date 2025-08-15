@@ -47,7 +47,7 @@ const Sign = (formConfig) => {
           {formConfig.map((input) => (
             <Form.Group
               className="mb-3"
-              controlId="exampleForm.ControlInput1"
+              controlId={input.name}
               key={input.name}
             >
               <Form.Label>{input.label}</Form.Label>
@@ -69,7 +69,7 @@ const Sign = (formConfig) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
+          Sumbit
           </Button>
         </Modal.Footer>
       </Modal>

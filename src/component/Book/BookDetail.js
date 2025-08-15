@@ -121,9 +121,7 @@ const BookDetail = () => {
 
           <div className={styles.ebookOptions}>
             <div>
-              <button>
-                <Link href={"/flip-book/the-tireless-traveler-ebook.html"}>EBOOK (PDF) $ 35.00</Link>
-              </button>
+              <button>EBOOK (PDF) $ 35.00</button>
             </div>
             <div>
               <button>Hardcover $ 100.00</button>
