@@ -68,7 +68,6 @@ const Header = () => {
         userdata
       );
       router.push("/flip-book/the-tireless-traveler-ebook.html");
-      console.log("data", data);
     } catch (error) {
       if (error.response) {
         console.error("Error:", error.response.data);
@@ -83,7 +82,6 @@ const Header = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/signUp`,
         userdata
       );
-      console.log("data", data);
     } catch (error) {
       if (error.response) {
         console.error("Error:", error.response.data);
