@@ -44,6 +44,15 @@ const handleShare = async () => {
 
 const BookDetail = () => {
   const [imageChange, setImageChnage] = useState("/images/book-box-cover.webp");
+  const [buyitems, setBuyItems] = useState({ eBook: "35.00", hardcover: "" });
+
+  const handleBuyitem = (e) => {
+    const { name, value, checked } = e.target;
+    setBuyItems((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className={styles.bookDetailContainer}>
@@ -122,26 +131,34 @@ const BookDetail = () => {
               <button>
                 <input
                   type="checkbox"
-                  id="option1"
-                  name="options"
-                  value="EBOOK-35.00"
+                  id="EBOOK"
+                  name="eBook"
+                  value="35.00"
+                  onChange={handleBuyitem}
+                  checked={buyitems.eBook}
                 />
-                <label for="option1">EBOOK (PDF) $ 35.00</label>
+                <label htmlFor="EBOOK" style={{ paddingLeft: "8px" }}>
+                  EBOOK (PDF) $ 35.00
+                </label>
               </button>
               <button>
                 <input
                   type="checkbox"
-                  id="option1"
-                  name="options"
-                  value="Hardcover-100.00"
+                  id="Hardcover"
+                  name="hardcover"
+                  value="100.00"
+                  onChange={handleBuyitem}
+                  disabled
                 />
-                <label for="option1">Hardcover $ 100.00</label>
+                <label htmlFor="Hardcover" style={{ paddingLeft: "8px" }}>
+                  Hardcover $ 100.00
+                </label>
               </button>
             </div>
 
             <div>
               <PayPalScriptProvider options={initialOptions}>
-                <PaypalPayment />
+                <PaypalPayment buyitems={buyitems} />
               </PayPalScriptProvider>
             </div>
           </div>
@@ -182,7 +199,7 @@ const BookDetail = () => {
           <video
             width="100%"
             controls
-            autoplay
+            // autoPlay
             poster="/images/book-box-cover.webp"
           >
             <source src="/images/book_video.mp4" type="video/mp4" />

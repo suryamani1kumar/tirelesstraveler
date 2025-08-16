@@ -8,13 +8,23 @@ const styles = {
   layout: "vertical",
   height: 35,
 };
-const PaypalPayment = () => {
+const PaypalPayment = ({ buyitems }) => {
   const router = useRouter();
   const [{ isPending }] = usePayPalScriptReducer();
+
   const oncreateOrder = async () => {
+    const bodyData = Object.entries(buyitems)
+      .filter(
+        ([_, value]) => value !== undefined && value !== null && value !== ""
+      )
+      .map(([key, value]) => ({
+        productType: key,
+        productPrice: value,
+      }));
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/createorder`
+        `${process.env.NEXT_PUBLIC_API_URL}/createorder`,
+        bodyData
       );
       return data.orderId;
     } catch (error) {
