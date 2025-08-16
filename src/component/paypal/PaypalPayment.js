@@ -1,11 +1,8 @@
 import React from "react";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-const initialOptions = {
-  clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
-};
 const styles = {
   shape: "rect",
   layout: "vertical",
@@ -13,6 +10,7 @@ const styles = {
 };
 const PaypalPayment = () => {
   const router = useRouter();
+  const [{ isPending }] = usePayPalScriptReducer();
   const oncreateOrder = async () => {
     try {
       const { data } = await axios.post(
@@ -44,16 +42,31 @@ const PaypalPayment = () => {
     console.error("paypal Error", error);
     router.push("/cancel-payment");
   };
-  
+
   return (
-    <PayPalScriptProvider options={initialOptions}>
+    <>
+      {isPending && (
+        <button
+          disabled
+          style={{
+            width: "100%",
+            height: "45px",
+            background: "#ccc",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "not-allowed",
+          }}
+        >
+          Loading PayPal…
+        </button>
+      )}
       <PayPalButtons
         style={styles}
         createOrder={oncreateOrder}
         onApprove={onApprove}
         onError={onError}
       />
-    </PayPalScriptProvider>
+    </>
   );
 };
 

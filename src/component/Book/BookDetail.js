@@ -10,6 +10,7 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 import PaypalPayment from "../paypal/PaypalPayment";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const img = [
   "/images/book-box-cover.webp",
@@ -18,36 +19,32 @@ const img = [
   "/images/book_inside_1.webp",
 ];
 
+const initialOptions = {
+  clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
+};
+
+const handleShare = async () => {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: `Explore Arvi’s journey, a photographer and future astronaut, through captivating visuals and stories.`,
+        text: `Explore Arvi’s journey, a photographer and future astronaut, through captivating visuals and stories.`,
+        url: "https://www.tirelesstraveler.net/publication",
+      });
+    } catch (error) {
+      console.error("Error sharing:", error);
+    }
+  } else {
+    // Fallback for browsers that don't support Web Share API
+    alert(
+      "Web Share API is not supported in this browser. You can manually copy the URL."
+    );
+  }
+};
+
 const BookDetail = () => {
   const [imageChange, setImageChnage] = useState("/images/book-box-cover.webp");
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: `A passionate photographer with an archive of one million images,
-            Arvi documents both iconic landmarks and hidden gems. As “Future
-            Astronaut No. 326” with Virgin Galactic, his spirit of exploration
-            extends beyond Earth. Whether navigating polar extremes or capturing
-            cultural landscapes, his adventures highlight the resilience of
-            humanity and the boundless wonders of our world.`, // Or a custom title
-          text: `A passionate photographer with an archive of one million images,
-            Arvi documents both iconic landmarks and hidden gems. As “Future
-            Astronaut No. 326” with Virgin Galactic, his spirit of exploration
-            extends beyond Earth. Whether navigating polar extremes or capturing
-            cultural landscapes, his adventures highlight the resilience of
-            humanity and the boundless wonders of our world.`, // Or custom text
-          url: "https://www.tirelesstraveler.net/publication", // The URL to share
-        });
-      } catch (error) {
-        console.error("Error sharing:", error);
-      }
-    } else {
-      // Fallback for browsers that don't support Web Share API
-      alert(
-        "Web Share API is not supported in this browser. You can manually copy the URL."
-      );
-    }
-  };
+
   return (
     <div className={styles.bookDetailContainer}>
       <nav className={styles.breadcrumb}>
@@ -122,12 +119,30 @@ const BookDetail = () => {
 
           <div className={styles.ebookOptions}>
             <div>
-              <button>EBOOK (PDF) $ 35.00</button>
-              <button>Hardcover $ 100.00</button>
+              <button>
+                <input
+                  type="checkbox"
+                  id="option1"
+                  name="options"
+                  value="EBOOK-35.00"
+                />
+                <label for="option1">EBOOK (PDF) $ 35.00</label>
+              </button>
+              <button>
+                <input
+                  type="checkbox"
+                  id="option1"
+                  name="options"
+                  value="Hardcover-100.00"
+                />
+                <label for="option1">Hardcover $ 100.00</label>
+              </button>
             </div>
 
             <div>
-              <PaypalPayment />
+              <PayPalScriptProvider options={initialOptions}>
+                <PaypalPayment />
+              </PayPalScriptProvider>
             </div>
           </div>
         </div>
