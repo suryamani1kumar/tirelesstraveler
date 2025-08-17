@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import PaypalPayment from "../paypal/PaypalPayment";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { isToken } from "@/utils";
 
 const img = [
   "/images/book-box-cover.webp",
@@ -45,6 +46,9 @@ const handleShare = async () => {
 const BookDetail = () => {
   const [imageChange, setImageChnage] = useState("/images/book-box-cover.webp");
   const [buyitems, setBuyItems] = useState({ eBook: "35.00", hardcover: "" });
+  const istoken = isToken();
+
+  console.log("istoken", istoken);
 
   const handleBuyitem = (e) => {
     const { name, value, checked } = e.target;
@@ -56,7 +60,7 @@ const BookDetail = () => {
 
   return (
     <div className={styles.bookDetailContainer}>
-      <nav className={styles.breadcrumb}>
+      <nav className="breadcrumb">
         <Link href="/">Home</Link> / <span>THE TIRELESS TRAVELER</span>
       </nav>
 
@@ -157,9 +161,15 @@ const BookDetail = () => {
             </div>
 
             <div>
-              <PayPalScriptProvider options={initialOptions}>
-                <PaypalPayment buyitems={buyitems} />
-              </PayPalScriptProvider>
+              {istoken ? (
+                <PayPalScriptProvider options={initialOptions}>
+                  <PaypalPayment buyitems={buyitems} />
+                </PayPalScriptProvider>
+              ) : (
+                <button>
+                  <Link href={"/checkout"}>Buy Now</Link>
+                </button>
+              )}
             </div>
           </div>
         </div>

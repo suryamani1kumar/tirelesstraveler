@@ -12,7 +12,7 @@
 }
 
 main {
-  margin-top: 75px;
+  margin-top: 60px;
 }
 
 /* -------------------------------Header------------------------------ */
@@ -74,6 +74,14 @@ nav ul li a:hover {
   color: #9a9999;
 }
 
+.breadcrumb {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.breadcrumb a {
+  text-decoration: none;
+  color: #007bff;
+}
 /*---------------------------footer----------------------------  */
 .footer {
   background-color: #181818;

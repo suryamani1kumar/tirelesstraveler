@@ -44,10 +44,7 @@ export default function Home() {
         <meta name="Content-Language" content="EN" />
         <meta name="keywords" content="The Tireless Traveler" />
         <meta name="description" content="The Tireless Traveler" />
-        <link
-          rel="canonical"
-          href="https://www.tirelesstraveler.net/"
-        />
+        <link rel="canonical" href="https://www.tirelesstraveler.net/" />
         <meta property="og:title" content="tirelesstraveler" />
         <meta property="og:url" content="https://www.tirelesstraveler.net" />
         <meta
@@ -68,11 +65,11 @@ export default function Home() {
                 />
               </div>
 
-              {device !== "Mobile" && (
-                <Carousel.Caption>
-                  <h3>{item.name}</h3>
-                </Carousel.Caption>
-              )}
+              {/* {device !== "Mobile" && ( */}
+              <Carousel.Caption>
+                <h3>{item.name}</h3>
+              </Carousel.Caption>
+              {/* )} */}
             </Carousel.Item>
           ))}
         </Carousel>

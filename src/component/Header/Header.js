@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Sign from "../sign/Sign";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const signConfig = [
   {
@@ -67,6 +68,10 @@ const Header = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/signIn`,
         userdata
       );
+      console.log("data", data);
+      // const token = "Hello";
+      // Cookies.set("token", token, { expires: 7 }); // expires in 7 days
+
       router.push("/flip-book/the-tireless-traveler-ebook.html");
     } catch (error) {
       if (error.response) {
@@ -94,7 +99,7 @@ const Header = () => {
   return (
     <>
       <header className="sticky-header">
-        <div className="container mx-auto px-4 py-4 flexcontainer">
+        <div className="container mx-auto px-4 py-3 flexcontainer">
           <div className="logo">
             <Link href="/">
               <span>TIRELESS TRAVELER</span>
