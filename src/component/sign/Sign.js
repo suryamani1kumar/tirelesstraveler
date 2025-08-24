@@ -3,8 +3,8 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 const Sign = (formConfig) => {
-  return function SignModal(props){
-    const { open, handleClose, onSumbit } = props;
+  return function SignModal(props) {
+    const { open, handleClose, onSumbit, showSignUp ,handleopen} = props;
     const [formData, setFormData] = useState(
       formConfig.reduce((acc, field) => {
         acc[field.name] = "";
@@ -43,7 +43,7 @@ const Sign = (formConfig) => {
 
     return (
       <Modal show={open} onHide={handleClose}>
-        <Modal.Body>
+        <Modal.Body className="pb-0">
           {formConfig.map((input) => (
             <Form.Group
               className="mb-3"
@@ -67,11 +67,22 @@ const Sign = (formConfig) => {
             </Form.Group>
           ))}
         </Modal.Body>
-        <Modal.Footer>
+        <div className="px-4 text-center">
           <Button variant="primary" onClick={handleSubmit}>
-          Sumbit
+            Sumbit
           </Button>
-        </Modal.Footer>
+          <div className="pb-3 pt-2">
+            {showSignUp ? (
+              <div style={{ color: "#0d6efd", cursor: "pointer" }} onClick={handleopen}>
+                Don’t have an account? Register now.
+              </div>
+            ) : (
+              <div style={{ color: "#0d6efd", cursor: "pointer" }} onClick={handleopen}>
+                Already have an account? Log in
+              </div>
+            )}
+          </div>
+        </div>
       </Modal>
     );
   };

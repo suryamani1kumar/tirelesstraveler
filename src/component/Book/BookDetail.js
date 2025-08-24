@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./book.module.scss";
 import Link from "next/link";
-import { Tabs, Tab } from "react-bootstrap";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,7 +10,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import PaypalPayment from "../paypal/PaypalPayment";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import { isToken } from "@/utils";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const img = [
   "/images/book-box-cover.webp",
@@ -44,11 +44,9 @@ const handleShare = async () => {
 };
 
 const BookDetail = () => {
+  const router = useRouter();
   const [imageChange, setImageChnage] = useState("/images/book-box-cover.webp");
   const [buyitems, setBuyItems] = useState({ eBook: "35.00", hardcover: "" });
-  const istoken = isToken();
-
-  console.log("istoken", istoken);
 
   const handleBuyitem = (e) => {
     const { name, value, checked } = e.target;
@@ -56,6 +54,21 @@ const BookDetail = () => {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const handleBuy = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/signInAuth`,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log("res.data", res);
+    } catch (err) {
+      console.log("err", err.response);
+    }
+    // router.push("/checkout");
   };
 
   return (
@@ -161,61 +174,15 @@ const BookDetail = () => {
             </div>
 
             <div>
-              {istoken ? (
-                <PayPalScriptProvider options={initialOptions}>
-                  <PaypalPayment buyitems={buyitems} />
-                </PayPalScriptProvider>
-              ) : (
-                <button>
-                  <Link href={"/checkout"}>Buy Now</Link>
-                </button>
-              )}
+              <button onClick={handleBuy}>Buy Now</button>
+
+              <PayPalScriptProvider options={initialOptions}>
+                <PaypalPayment buyitems={buyitems} />
+              </PayPalScriptProvider>
             </div>
           </div>
         </div>
       </div>
-      <Tabs defaultActiveKey="Product Description">
-        <Tab eventKey="Product Description" title="About Author">
-          <p>
-            Arvi Singh Bahal’s journey reflects an unrelenting wanderlust and
-            entrepreneurial drive. From immigrating to the U.S. in the 1970s
-            with just $108 to building successful businesses in apparel and real
-            estate, he transformed work-related travel into a lifelong quest.
-            Visiting all 193 UN countries by 2023, he has explored over two
-            hundred territories using diverse modes, from freight trains to dog
-            sleds, accumulating over three million miles of travel.
-          </p>
-
-          <p>
-            A passionate photographer with an archive of one million images,
-            Arvi documents both iconic landmarks and hidden gems. As “Future
-            Astronaut No. 326” with Virgin Galactic, his spirit of exploration
-            extends beyond Earth. Whether navigating polar extremes or capturing
-            cultural landscapes, his adventures highlight the resilience of
-            humanity and the boundless wonders of our world.
-          </p>
-        </Tab>
-        <Tab eventKey="Table of Contents" title="About Book">
-          <p style={{ padding: "10px" }}>
-            A passionate photographer with an archive of one million images,
-            Arvi documents both iconic landmarks and hidden gems. As “Future
-            Astronaut No. 326” with Virgin Galactic, his spirit of exploration
-            extends beyond Earth. Whether navigating polar extremes or capturing
-            cultural landscapes, his adventures highlight the resilience of
-            humanity and the boundless wonders of our world.
-          </p>
-        </Tab>
-        <Tab eventKey="visual" title="Visual">
-          <video
-            width="100%"
-            controls
-            // autoPlay
-            poster="/images/book-box-cover.webp"
-          >
-            <source src="/images/book_video.mp4" type="video/mp4" />
-          </video>
-        </Tab>
-      </Tabs>
     </div>
   );
 };

@@ -14,7 +14,7 @@ const Checkout = () => {
       <nav className="breadcrumb">
         <Link href="/">Home</Link> / <span> THE TIRELESS TRAVELER</span>
       </nav>
-      <div>
+      <div className="checkoutContainer">
         <div>
           <Image
             src={"/images/book-box-cover.webp"}
@@ -22,6 +22,9 @@ const Checkout = () => {
             width={250}
             height={250}
           />
+        </div>
+        <div>
+          <p>Product Type: EBOOK</p>
         </div>
         <div>
           <PayPalScriptProvider options={initialOptions}>

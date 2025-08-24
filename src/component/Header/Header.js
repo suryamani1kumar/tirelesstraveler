@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Sign from "../sign/Sign";
 import axios from "axios";
-import Cookies from "js-cookie";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 const signConfig = [
   {
@@ -44,14 +45,17 @@ const Header = () => {
   const handleCloseSignInModal = () => setOpenSignInModal(false);
   const handleShowSignInModal = () => {
     setOpenSignInModal(true);
-    setShow(false);
+    handleClose();
+    handleCloseSignUpModal();
   };
 
   const handleCloseSignUpModal = () => setOpenSignUpModal(false);
   const handleShowSignUpModal = () => {
     setOpenSignUpModal(true);
-    setShow(false);
+    handleClose();
+    handleCloseSignInModal();
   };
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -66,13 +70,12 @@ const Header = () => {
     try {
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/signIn`,
-        userdata
+        userdata,
+        { withCredentials: true }
       );
       console.log("data", data);
-      // const token = "Hello";
-      // Cookies.set("token", token, { expires: 7 }); // expires in 7 days
 
-      router.push("/flip-book/the-tireless-traveler-ebook.html");
+      // router.push("/flip-book/the-tireless-traveler-ebook.html");
     } catch (error) {
       if (error.response) {
         console.error("Error:", error.response.data);
@@ -87,6 +90,9 @@ const Header = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/signUp`,
         userdata
       );
+      if (data.message === "customer registered successfully") {
+        handleShowSignInModal();
+      }
     } catch (error) {
       if (error.response) {
         console.error("Error:", error.response.data);
@@ -95,7 +101,27 @@ const Header = () => {
       }
     }
   };
-
+  const HandleProfile = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/signInAuth`,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log("res.data", res);
+    } catch (err) {
+      if (err.response) {
+        if (err.response.status === 401) {
+          handleShowSignInModal();
+        } else {
+          console.error("API error:", err.response.data || err.message);
+        }
+      } else {
+        console.error("Unexpected error:", err.message);
+      }
+    }
+  };
   return (
     <>
       <header className="sticky-header">
@@ -118,8 +144,24 @@ const Header = () => {
                 <li>
                   <Link href="/blog">Blog</Link>
                 </li>
-                <li onClick={handleShowSignInModal}>Sign in</li>
-                <li onClick={handleShowSignUpModal}>Sign up</li>
+                <li>
+                  <DropdownButton
+                    drop={"down-centered"}
+                    variant="secondary"
+                    title={`Login`}
+                    size="sm"
+                  >
+                    <Dropdown.Item onClick={handleShowSignInModal}>
+                      Login
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={handleShowSignUpModal}>
+                      Register
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={HandleProfile}>
+                      My Profile
+                    </Dropdown.Item>
+                  </DropdownButton>
+                </li>
               </ul>
             </nav>
           ) : (
@@ -143,21 +185,26 @@ const Header = () => {
               <li>
                 <Link href="/about">About</Link>
               </li>
-              <li onClick={handleShowSignInModal}>Sign in</li>
-              <li onClick={handleShowSignUpModal}>Sign up</li>
+              <li onClick={handleShowSignInModal}>Login</li>
+              <li onClick={handleShowSignUpModal}>Register</li>
+              <li onClick={HandleProfile}>My Profile</li>
             </ul>
           </Offcanvas.Body>
         </Offcanvas>
       </header>
       <SignInModal
         handleClose={handleCloseSignInModal}
+        handleopen={handleShowSignUpModal}
         open={openSignInModal}
         onSumbit={signInSubmit}
+        showSignUp={true}
       />
       <SignUpModal
         handleClose={handleCloseSignUpModal}
+        handleopen={handleShowSignInModal}
         open={openSignUpModal}
         onSumbit={signUpSubmit}
+        showSignUp={false}
       />
     </>
   );
