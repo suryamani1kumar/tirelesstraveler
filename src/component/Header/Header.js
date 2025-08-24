@@ -66,28 +66,31 @@ const Header = () => {
     };
   }, [router]);
 
-  const signInSubmit = async (userdata) => {
+  const loginSubmit = async (userdata) => {
     try {
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/signIn`,
+      const data = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/customerLogin`,
         userdata,
         { withCredentials: true }
       );
-      console.log("data", data);
-
-      // router.push("/flip-book/the-tireless-traveler-ebook.html");
+      if (data.status === 200) {
+        router.push("/my-profile");
+      }
     } catch (error) {
-      if (error.response) {
-        console.error("Error:", error.response.data);
+      if (error.response.status === 401) {
+        console.error("Error:", error.response);
+      } else if (error.response.status === 404) {
+        handleShowSignUpModal();
+        console.error("Error:", error.response);
       } else {
         console.error("Error:", error.message);
       }
     }
   };
-  const signUpSubmit = async (userdata) => {
+  const registerSubmit = async (userdata) => {
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/signUp`,
+        `${process.env.NEXT_PUBLIC_API_URL}/customerRegister`,
         userdata
       );
       if (data.message === "customer registered successfully") {
@@ -95,6 +98,7 @@ const Header = () => {
       }
     } catch (error) {
       if (error.response) {
+        // handleShowSignInModal();
         console.error("Error:", error.response.data);
       } else {
         console.error("Error:", error.message);
@@ -104,12 +108,14 @@ const Header = () => {
   const HandleProfile = async () => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/signInAuth`,
+        `${process.env.NEXT_PUBLIC_API_URL}/customerAuth`,
         {
           withCredentials: true,
         }
       );
-      console.log("res.data", res);
+      if (res.status === 200) {
+        router.push("/my-profile");
+      }
     } catch (err) {
       if (err.response) {
         if (err.response.status === 401) {
@@ -196,14 +202,14 @@ const Header = () => {
         handleClose={handleCloseSignInModal}
         handleopen={handleShowSignUpModal}
         open={openSignInModal}
-        onSumbit={signInSubmit}
+        onSumbit={loginSubmit}
         showSignUp={true}
       />
       <SignUpModal
         handleClose={handleCloseSignUpModal}
         handleopen={handleShowSignInModal}
         open={openSignUpModal}
-        onSumbit={signUpSubmit}
+        onSumbit={registerSubmit}
         showSignUp={false}
       />
     </>

@@ -59,11 +59,15 @@ const BookDetail = () => {
   const handleBuy = async () => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/signInAuth`,
+        `${process.env.NEXT_PUBLIC_API_URL}/customerAuth`,
         {
           withCredentials: true,
         }
       );
+      if (res.status === 200) {
+        console.log("res",res.data)
+        // router.push("/my-profile");
+      }
       console.log("res.data", res);
     } catch (err) {
       console.log("err", err.response);

@@ -23,7 +23,7 @@ const PaypalPayment = ({ buyitems }) => {
       }));
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/createorder`,
+        `${process.env.NEXT_PUBLIC_API_URL}/createPaypalOrder`,
         bodyData
       );
       return data.orderId;
