@@ -1,12 +1,13 @@
 import { useDeviceType } from "@/hook/useDeviceType";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Sign from "../sign/Sign";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import { Context } from "../context";
 
 const signConfig = [
   {
@@ -39,8 +40,7 @@ const Header = () => {
   const device = useDeviceType();
   const router = useRouter();
   const [show, setShow] = useState(false);
-  const [openSignInModal, setOpenSignInModal] = useState(false);
-  const [openSignUpModal, setOpenSignUpModal] = useState(false);
+  const { openSignInModal, openSignUpModal, setOpenSignInModal, setOpenSignUpModal } = useContext(Context)
 
   const handleCloseSignInModal = () => setOpenSignInModal(false);
   const handleShowSignInModal = () => {

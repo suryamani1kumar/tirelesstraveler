@@ -12,7 +12,7 @@
 }
 
 main {
-  margin-top: 60px;
+  padding-top: 60px;
 }
 
 /* -------------------------------Header------------------------------ */
@@ -78,10 +78,12 @@ nav ul li a:hover {
   font-size: 14px;
   margin-bottom: 15px;
 }
+
 .breadcrumb a {
   text-decoration: none;
   color: #007bff;
 }
+
 /*---------------------------footer----------------------------  */
 .footer {
   background-color: #181818;

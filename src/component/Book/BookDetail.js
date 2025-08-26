@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./book.module.scss";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,10 +8,9 @@ import {
   faLinkedin,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import PaypalPayment from "../paypal/PaypalPayment";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { Context } from "../context";
 
 const img = [
   "/images/book-box-cover.webp",
@@ -20,9 +19,6 @@ const img = [
   "/images/book_inside_1.webp",
 ];
 
-const initialOptions = {
-  clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
-};
 
 const handleShare = async () => {
   if (navigator.share) {
@@ -47,6 +43,7 @@ const BookDetail = () => {
   const router = useRouter();
   const [imageChange, setImageChnage] = useState("/images/book-box-cover.webp");
   const [buyitems, setBuyItems] = useState({ eBook: "35.00", hardcover: "" });
+  const { setOpenSignInModal } = useContext(Context)
 
   const handleBuyitem = (e) => {
     const { name, value, checked } = e.target;
@@ -65,14 +62,20 @@ const BookDetail = () => {
         }
       );
       if (res.status === 200) {
-        console.log("res",res.data)
-        // router.push("/my-profile");
+        router.push("/checkout");
       }
       console.log("res.data", res);
     } catch (err) {
-      console.log("err", err.response);
+      if (err.response) {
+        if (err.response.status === 401) {
+          setOpenSignInModal(true)
+        } else {
+          console.error("API error:", err.response.data || err.message);
+        }
+      } else {
+        console.error("Unexpected error:", err.message);
+      }
     }
-    // router.push("/checkout");
   };
 
   return (
@@ -179,10 +182,6 @@ const BookDetail = () => {
 
             <div>
               <button onClick={handleBuy}>Buy Now</button>
-
-              <PayPalScriptProvider options={initialOptions}>
-                <PaypalPayment buyitems={buyitems} />
-              </PayPalScriptProvider>
             </div>
           </div>
         </div>

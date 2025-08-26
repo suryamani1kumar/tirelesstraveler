@@ -1,0 +1,45 @@
+.user_card {
+    width: 350px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    font-family: sans-serif;
+    background: #fff;
+    margin: 20px 0;
+
+
+    &__avatar {
+
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+
+        }
+    }
+
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    &__name {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+
+    &__email {
+        font-size: 14px;
+        color: #555;
+    }
+}
