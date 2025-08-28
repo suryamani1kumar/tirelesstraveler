@@ -680,6 +680,14 @@ h2 {
   text-decoration: none;
 }
 
+/* Checkout */
+.checkoutContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+
+}
+
 /* Mobile (up to 767px) */
 @media (max-width: 767px) {
   .carouselconatiner {

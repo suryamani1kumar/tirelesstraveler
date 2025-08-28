@@ -53,18 +53,28 @@ const BookDetail = () => {
     }));
   };
 
-  const handleBuy = async () => {
+  const createOrder = async (id) => {
+    const order = Object.entries(buyitems)
+      .filter(
+        ([_, value]) => value !== undefined && value !== null && value !== ""
+      )
+      .map(([key, value]) => ({
+        productType: key,
+        productPrice: value,
+      }))
+    const body = {
+      product: order
+    }
     try {
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/customerAuth`,
-        {
-          withCredentials: true,
-        }
-      );
-      if (res.status === 200) {
-        router.push("/checkout");
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/createOrder`, body, {
+        withCredentials: true,
       }
-      console.log("res.data", res);
+      );
+
+      if (res.status === 201) {
+        router.push(`/checkout`);
+      }
     } catch (err) {
       if (err.response) {
         if (err.response.status === 401) {
@@ -76,7 +86,8 @@ const BookDetail = () => {
         console.error("Unexpected error:", err.message);
       }
     }
-  };
+  }
+
 
   return (
     <div className={styles.bookDetailContainer}>
@@ -181,7 +192,7 @@ const BookDetail = () => {
             </div>
 
             <div>
-              <button onClick={handleBuy}>Buy Now</button>
+              <button onClick={createOrder}>Buy Now</button>
             </div>
           </div>
         </div>
