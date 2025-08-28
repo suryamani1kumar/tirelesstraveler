@@ -57,7 +57,7 @@ const Blog = () => {
                         commodo ipsum. Morbi sodales consectetur ex vitae
                         molestie. Morbi ultrices rhoncus...
                       </p>
-                      <Link href="/blog/sdasdsdasd" className="read-more">
+                      <Link href="/blog/silk-road-trip" className="read-more">
                         CONTINUE READING
                       </Link>
                     </div>
