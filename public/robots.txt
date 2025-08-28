@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /flip-book/the-tireless-traveler-ebook.html
