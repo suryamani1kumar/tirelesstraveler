@@ -1,0 +1,27 @@
+name: Deploy tirelesstraveler to VPS          # A friendly name that shows in the Actions tab
+
+on:                                  # When should this workflow run?
+  push:                              # Trigger it on code pushes
+    branches: [ "master" ]             # …only when the 'master' branch gets new commits
+
+jobs:                                # A workflow can have multiple jobs; we need just one
+  deploy:                            # Name of this job
+    runs-on: ubuntu-latest           # Use GitHub's Ubuntu runner VM
+
+    steps:                           # Each step runs in order on the runner
+      - name: Checkout Code
+        uses: actions/checkout@v3    # Pulls your repository code into the runner
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v0.1.10  # Action that SSHes into your VPS and runs commands
+        with:
+          host: ${{ secrets.VPS_HOST }}    # Your VPS IP/hostname, stored as a GitHub Secret
+          username: ${{ secrets.VPS_USER }} # SSH user on the VPS (e.g., ubuntu or root)
+          key: ${{ secrets.VPS_KEY }}      # Your *private* SSH key (paste the key text in the secret)
+          script: |                        # Shell script to execute on the VPS after SSHing in
+            set -e                         
+            cd /var/www/tirelesstraveler    
+            git pull origin main           
+            npm ci                          
+            npm run build                  
+            pm2 restart tirelesstraveler         
