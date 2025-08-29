@@ -17,7 +17,7 @@ jobs:                                # A workflow can have multiple jobs; we nee
         with:
           host: ${{ secrets.VPS_HOST }}    # Your VPS IP/hostname, stored as a GitHub Secret
           username: ${{ secrets.VPS_USER }} # SSH user on the VPS (e.g., ubuntu or root)
-          key: ${{ secrets.VPS_KEY }}      # Your *private* SSH key (paste the key text in the secret)
+          key: ${{ secrets.VPS_SSH_KEY }}      # Your *private* SSH key (paste the key text in the secret)
           script: |                        # Shell script to execute on the VPS after SSHing in
             set -e                         
             cd /var/www/tirelesstraveler    
