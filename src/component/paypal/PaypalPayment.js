@@ -8,19 +8,34 @@ const styles = {
   layout: "vertical",
   height: 35,
 };
-const PaypalPayment = ({ buyitems }) => {
+const PaypalPayment = ({ OrderData }) => {
   const router = useRouter();
+
   const [{ isPending }] = usePayPalScriptReducer();
 
   const oncreateOrder = async () => {
-    const bodyData = Object.entries(buyitems)
-      .filter(
-        ([_, value]) => value !== undefined && value !== null && value !== ""
-      )
-      .map(([key, value]) => ({
-        productType: key,
-        productPrice: value,
-      }));
+    const product = OrderData.products.map((item) => {
+      let description;
+      if (item.bookType === "ebook") {
+        description = "Digital edition (ebook)";
+      } else {
+        description = "Printed edition (hardcover)";
+      }
+      return {
+        description: description,
+        quantity: item.quantity,
+        price: item.price,
+        currency: "USD",
+        bookType: item.bookType,
+      };
+    });
+
+    const bodyData = {
+      items: product,
+      totalAmount: OrderData.totalAmount,
+      currency: "USD",
+    };
+
     try {
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/createPaypalOrder`,
@@ -38,8 +53,9 @@ const PaypalPayment = ({ buyitems }) => {
       if (!getdata.orderID) {
         throw new Error("Invalid order id");
       }
-      const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/captaurepayment/${getdata.orderID}`
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/captaurepayment/${getdata.orderID}`,
+        { orderId: router.query.id }
       );
       router.push("/complete-payment");
     } catch (error) {

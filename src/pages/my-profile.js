@@ -5,10 +5,10 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 
 const Profile = () => {
-  const { setOpenSignInModal } = useContext(Context)
-  const [showCustomerProfile, setShowCustomerProfile] = useState(false)
-  const [customer, setCustomer] = useState(null)
-  const router = useRouter()
+  const { setOpenSignInModal } = useContext(Context);
+  const [showCustomerProfile, setShowCustomerProfile] = useState(false);
+  const [customer, setCustomer] = useState(null);
+  const router = useRouter();
 
   const getCustomer = async () => {
     try {
@@ -19,13 +19,13 @@ const Profile = () => {
         }
       );
       if (res.status === 200) {
-        setShowCustomerProfile(true)
-        setCustomer(res.data)
+        setShowCustomerProfile(true);
+        setCustomer(res.data);
       }
     } catch (err) {
       if (err.response) {
         if (err.response.status === 401) {
-          router.push("/")
+          router.push("/");
           setOpenSignInModal(true);
         } else {
           console.error("API error:", err.response.data || err.message);
@@ -36,15 +36,18 @@ const Profile = () => {
     }
   };
 
-  useEffect(() => getCustomer())
+  useEffect(() => {
+    getCustomer();
+  }, []);
 
   return (
     <div className="container">
-      {showCustomerProfile && <UserProfileCard
-        name="Suryamani Kumar"
-        email="suryamani@example.com"
-      />}
-
+      {showCustomerProfile && (
+        <UserProfileCard
+          name={customer?.data?.fullname}
+          email={customer?.data?.email}
+        />
+      )}
     </div>
   );
 };

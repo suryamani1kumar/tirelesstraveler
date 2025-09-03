@@ -19,7 +19,6 @@ const img = [
   "/images/book_inside_1.webp",
 ];
 
-
 const handleShare = async () => {
   if (navigator.share) {
     try {
@@ -42,14 +41,15 @@ const handleShare = async () => {
 const BookDetail = () => {
   const router = useRouter();
   const [imageChange, setImageChnage] = useState("/images/book-box-cover.webp");
-  const [buyitems, setBuyItems] = useState({ eBook: "35.00", hardcover: "" });
-  const { setOpenSignInModal } = useContext(Context)
+  const [buyitems, setBuyItems] = useState({ eBook: "35", hardcover: "" });
+  const { setOpenSignInModal } = useContext(Context);
 
   const handleBuyitem = (e) => {
     const { name, value, checked } = e.target;
+    console.log(checked);
     setBuyItems((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: checked ? value : "",
     }));
   };
 
@@ -59,26 +59,31 @@ const BookDetail = () => {
         ([_, value]) => value !== undefined && value !== null && value !== ""
       )
       .map(([key, value]) => ({
-        productType: key,
-        productPrice: value,
-      }))
+        bookType: key,
+        price: value,
+        quantity: 1,
+      }));
+
     const body = {
-      product: order
-    }
+      products: order,
+    };
+
     try {
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/createOrder`, body, {
-        withCredentials: true,
-      }
+        `${process.env.NEXT_PUBLIC_API_URL}/createOrder`,
+        body,
+        {
+          withCredentials: true,
+        }
       );
 
       if (res.status === 201) {
-        router.push(`/checkout`);
+        router.push(`/checkout?id=${res.data.data}`);
       }
     } catch (err) {
       if (err.response) {
         if (err.response.status === 401) {
-          setOpenSignInModal(true)
+          setOpenSignInModal(true);
         } else {
           console.error("API error:", err.response.data || err.message);
         }
@@ -86,13 +91,13 @@ const BookDetail = () => {
         console.error("Unexpected error:", err.message);
       }
     }
-  }
-
+  };
 
   return (
     <div className={styles.bookDetailContainer}>
       <nav className="breadcrumb">
-        <Link href="/">Home</Link> / <span>THE TIRELESS TRAVELER</span>
+        <Link href="/">Home&nbsp;</Link> /{" "}
+        <span>&nbsp; THE TIRELESS TRAVELER</span>
       </nav>
 
       <div className={styles.bookMain}>
@@ -183,7 +188,7 @@ const BookDetail = () => {
                   name="hardcover"
                   value="100.00"
                   onChange={handleBuyitem}
-                  disabled
+                  checked={buyitems.hardcover}
                 />
                 <label htmlFor="Hardcover" style={{ paddingLeft: "8px" }}>
                   Hardcover $ 100.00
