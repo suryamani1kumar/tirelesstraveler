@@ -53,9 +53,6 @@ const Checkout = () => {
       fetchData();
     }
   }, [router.query.id]);
-
-  console.log("getOrderData", getOrderData);
-
   return (
     <div className="container mx-auto px-4 pt-4">
       <nav className="breadcrumb">

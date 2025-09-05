@@ -46,7 +46,6 @@ const BookDetail = () => {
 
   const handleBuyitem = (e) => {
     const { name, value, checked } = e.target;
-    console.log(checked);
     setBuyItems((prevState) => ({
       ...prevState,
       [name]: checked ? value : "",

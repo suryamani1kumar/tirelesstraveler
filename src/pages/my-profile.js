@@ -1,6 +1,8 @@
 import { Context } from "@/component/context";
 import UserProfileCard from "@/component/CustomerProfile";
 import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 
@@ -41,12 +43,84 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container py-4">
       {showCustomerProfile && (
-        <UserProfileCard
-          name={customer?.data?.fullname}
-          email={customer?.data?.email}
-        />
+        <div className="d-flex  gap-5">
+          <UserProfileCard
+            name={customer?.data?.user?.fullname}
+            email={customer?.data?.user?.email}
+          />
+          {customer?.data?.orders && (
+            <div>
+              <h2>My Order</h2>
+              <table className="table-auto border-collapse border border-gray-400 w-full">
+                <thead>
+                  <tr className="bg-gray-200">
+                    <th className="border border-gray-400 px-4 py-2">
+                      Book Img
+                    </th>
+                    <th className="border border-gray-400 px-4 py-2">
+                      Book Type
+                    </th>
+                    <th className="border border-gray-400 px-4 py-2">
+                      Quantity
+                    </th>
+                    <th className="border border-gray-400 px-4 py-2">Price</th>
+                    <th className="border border-gray-400 px-4 py-2">
+                      PaymentStatus
+                    </th>
+                    <th className="border border-gray-400 px-4 py-2">
+                      Read Book
+                    </th>
+                  </tr>
+                </thead>
+                {customer?.data?.orders.map((item) => {
+                  return (
+                    <tbody key={item._id}>
+                      {item.products.map((book, index) => (
+                        <tr key={index}>
+                          <td className="border border-gray-400 px-4 py-2">
+                            <Image
+                              src={"/images/book-box-cover.webp"}
+                              height={40}
+                              width={80}
+                            />
+                          </td>
+                          <td className="border border-gray-400 px-4 py-2">
+                            {book.bookType}
+                          </td>
+                          <td className="border border-gray-400 px-4 py-2">
+                            {book.quantity}
+                          </td>
+                          <td className="border border-gray-400 px-4 py-2">
+                            {book.price}$
+                          </td>
+                          <td className="border border-gray-400 px-4 py-2">
+                            {item.paymentStatus}
+                          </td>
+                          <td className="border border-gray-400 px-4 py-2">
+                            {item.paymentStatus === "COMPLETED" &&
+                            book.bookType === "eBook" ? (
+                              <Link
+                                href={
+                                  "/flip-book/the-tireless-traveler-ebook.html"
+                                }
+                              >
+                                Read
+                              </Link>
+                            ) : (
+                              "---"
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  );
+                })}
+              </table>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

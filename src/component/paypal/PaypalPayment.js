@@ -10,13 +10,12 @@ const styles = {
 };
 const PaypalPayment = ({ OrderData }) => {
   const router = useRouter();
-
   const [{ isPending }] = usePayPalScriptReducer();
 
   const oncreateOrder = async () => {
     const product = OrderData.products.map((item) => {
       let description;
-      if (item.bookType === "ebook") {
+      if (item.bookType === "eBook") {
         description = "Digital edition (ebook)";
       } else {
         description = "Printed edition (hardcover)";
@@ -57,10 +56,10 @@ const PaypalPayment = ({ OrderData }) => {
         `${process.env.NEXT_PUBLIC_API_URL}/captaurepayment/${getdata.orderID}`,
         { orderId: router.query.id }
       );
-      router.push("/complete-payment");
+      router.push(`/complete-payment?id=${router.query.id}`);
     } catch (error) {
       console.error("paypal Error", error);
-      router.push("/cancel-payment");
+      router.push(`/cancel-payment?id=${router.query.id}`);
     }
   };
 
