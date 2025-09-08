@@ -16,9 +16,7 @@ const Profile = () => {
     try {
       const res = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/getcustomer`,
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       );
       if (res.status === 200) {
         setShowCustomerProfile(true);
@@ -43,83 +41,86 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="container py-4">
+    <div className="container">
       {showCustomerProfile && (
-        <div className="d-flex  gap-5">
-          <UserProfileCard
-            name={customer?.data?.user?.fullname}
-            email={customer?.data?.user?.email}
-          />
-          {customer?.data?.orders && (
-            <div>
-              <h2>My Order</h2>
-              <table className="table-auto border-collapse border border-gray-400 w-full">
-                <thead>
-                  <tr className="bg-gray-200">
-                    <th className="border border-gray-400 px-4 py-2">
-                      Book Img
-                    </th>
-                    <th className="border border-gray-400 px-4 py-2">
-                      Book Type
-                    </th>
-                    <th className="border border-gray-400 px-4 py-2">
-                      Quantity
-                    </th>
-                    <th className="border border-gray-400 px-4 py-2">Price</th>
-                    <th className="border border-gray-400 px-4 py-2">
-                      PaymentStatus
-                    </th>
-                    <th className="border border-gray-400 px-4 py-2">
-                      Read Book
-                    </th>
-                  </tr>
-                </thead>
-                {customer?.data?.orders.map((item) => {
-                  return (
-                    <tbody key={item._id}>
-                      {item.products.map((book, index) => (
-                        <tr key={index}>
-                          <td className="border border-gray-400 px-4 py-2">
-                            <Image
-                              src={"/images/book-box-cover.webp"}
-                              height={40}
-                              width={80}
-                            />
-                          </td>
-                          <td className="border border-gray-400 px-4 py-2">
-                            {book.bookType}
-                          </td>
-                          <td className="border border-gray-400 px-4 py-2">
-                            {book.quantity}
-                          </td>
-                          <td className="border border-gray-400 px-4 py-2">
-                            {book.price}$
-                          </td>
-                          <td className="border border-gray-400 px-4 py-2">
-                            {item.paymentStatus}
-                          </td>
-                          <td className="border border-gray-400 px-4 py-2">
-                            {item.paymentStatus === "COMPLETED" &&
-                            book.bookType === "eBook" ? (
-                              <Link
-                                href={
-                                  "/flip-book/the-tireless-traveler-ebook.html"
-                                }
-                              >
-                                Read
-                              </Link>
-                            ) : (
-                              "---"
-                            )}
-                          </td>
+        <div className="row g-4">
+          {/* Profile Card */}
+          <div className="col-12 col-lg-4">
+            <UserProfileCard
+              name={customer?.data?.user?.fullname}
+              email={customer?.data?.user?.email}
+            />
+          </div>
+
+          {/* Orders Table */}
+          <div className="col-12 col-lg-8 py-4">
+            <div className="card shadow-sm">
+              <div className="card-body">
+                <h3 className="h5 mb-3">My Orders</h3>
+                {customer?.data?.orders?.length > 0 ? (
+                  <div className="table-responsive">
+                    <table className="table align-middle">
+                      <thead className="table-dark">
+                        <tr>
+                          <th scope="col">Book</th>
+                          <th scope="col">Type</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Action</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  );
-                })}
-              </table>
+                      </thead>
+                      <tbody>
+                        {customer?.data?.orders.map((order) =>
+                          order.products.map((book, index) => (
+                            <tr key={order._id + index}>
+                              <td>
+                                <Image
+                                  src="/images/book-box-cover.webp"
+                                  alt="Book Cover"
+                                  height={40}
+                                  width={60}
+                                />
+                              </td>
+                              <td>{book.bookType}</td>
+                              <td>{book.quantity}</td>
+                              <td>${book.price}</td>
+                              <td>
+                                <span
+                                  className={`badge ${
+                                    order.paymentStatus === "COMPLETED"
+                                      ? "bg-success"
+                                      : "bg-warning text-dark"
+                                  }`}
+                                >
+                                  {order.paymentStatus}
+                                </span>
+                              </td>
+                              <td>
+                                {order.paymentStatus === "COMPLETED" &&
+                                book.bookType === "eBook" ? (
+                                  <Link
+                                    href="/flip-book/the-tireless-traveler-ebook.html"
+                                    className="btn btn-sm btn-primary"
+                                  >
+                                    Read
+                                  </Link>
+                                ) : (
+                                  <span className="text-muted">---</span>
+                                )}
+                              </td>
+                            </tr>
+                          ))
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <p className="text-muted">No orders found.</p>
+                )}
+              </div>
             </div>
-          )}
+          </div>
         </div>
       )}
     </div>
