@@ -147,9 +147,9 @@ const Header = () => {
                 <li>
                   <Link href="/about">About</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/blog">Blog</Link>
-                </li>
+                </li> */}
                 <li>
                   <DropdownButton
                     drop={"down-centered"}

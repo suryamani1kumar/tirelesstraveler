@@ -35,8 +35,59 @@ const banner = [
   },
 ];
 
+
+const gallery = [
+  {
+    name: "Ruby ( Manik )",
+    img: "/images/advanture.webp",
+    link: "/gemstones/ruby",
+  },
+  {
+    name: "Blue Sapphire ( Neelam )",
+    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787827408/gemstone-products/npp4ma5frmptmjpzmbpg.png",
+    link: "/gemstones/blue-sapphire",
+  },
+  {
+    name: "Emerald ( Panna )",
+    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787827051/gemstone-products/mlb3on5mpeothilxkmrz.png",
+    link: "/gemstones/emerald",
+  },
+  {
+    name: "Yellow Sapphire ( Pukhraj )",
+    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787827592/gemstone-products/kpaz8jt4kdiz2we09p6h.png",
+    link: "/gemstones/yellow-sapphire",
+  },
+  {
+    name: "Pearl ( Moti )",
+    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787844594/gemstone-products/t7vjucddlznnuou0adba.png",
+    link: "/gemstones/pearl",
+  },
+  {
+    name: "Red Coral ( Moonga )",
+    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787844625/gemstone-products/kbdkfjjype71c5hyelg3.png",
+    link: "/gemstones/red-coral",
+  },
+  {
+    name: "Opal",
+    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787828503/gemstone-products/n6e9w7udpbx85myroua2.png",
+    link: "/gemstones/opal",
+  },
+  {
+    name: "Turquoise ( Firoza )",
+    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787844648/gemstone-products/ozvefhlq1q4mj0ntonxp.jpg",
+    link: "/gemstones/turquoise",
+  },
+  {
+    name: "Citrine ( Sunela )",
+    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787844667/gemstone-products/oes0zceeynedoault6f0.jpg",
+    link: "/gemstones/citrine",
+  },
+];
+
 export default function Home() {
   const device = useDeviceType();
+  const featuredCategory = gallery[0];
+  const remainingCategories = gallery.slice(1, 5);
   return (
     <>
       <Head>
@@ -161,7 +212,76 @@ export default function Home() {
               />
             </div>
           </section>
-          <HomeCard />
+          {/* <HomeCard /> */}
+          <div className="relative mx-auto max-w-7xl">
+            <h2 className="mb-3 font-serif text-2xl font-bold text-[#1A1A1A] sm:text-3xl">
+              Our Gallery
+            </h2>
+
+            {/* ================= EDITORIAL GRID ================= */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
+              {/* ================= FEATURED CATEGORY ================= */}
+              <Link
+                href={`${featuredCategory.link}`}
+                className="group relative min-h-[430px] overflow-hidden rounded-2xl bg-[#EDE8DC] sm:col-span-2 lg:col-span-1 lg:row-span-2"
+              >
+                {/* Image */}
+                <img
+                  src={featuredCategory.img}
+                  alt={featuredCategory.name}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+
+                {/* Dark gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+
+              </Link>
+
+              {/* ================= SMALL CATEGORIES ================= */}
+              {remainingCategories.map((gemstone) => (
+                <Link
+                  key={gemstone.link}
+                  href={gemstone.link}
+                  className="group relative min-h-[220px] overflow-hidden rounded-2xl bg-[#EDE8DC]"
+                >
+                  {/* Image */}
+                  <img
+                    src={gemstone.img}
+                    alt={gemstone.name}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent transition-all duration-300 group-hover:from-black/85" />
+
+                </Link>
+              ))}
+            </div>
+
+            {/* ================= MOBILE / EXTRA CATEGORIES ================= */}
+            {gallery.length > 5 && (
+              <div className="my-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+                {gallery.slice(5).map((gemstone) => (
+                  <Link
+                    key={gemstone.link}
+                    href={gemstone.link}
+                    className="group relative h-45 overflow-hidden rounded-2xl bg-[#EDE8DC]"
+                  >
+                    <img
+                      src={gemstone.img}
+                      alt={gemstone.name}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
+
+                  </Link>
+                ))}
+              </div>
+            )}
+
+          </div>
         </div>
       </div>
     </>

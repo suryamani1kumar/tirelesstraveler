@@ -100,7 +100,7 @@ const Profile = () => {
                                 {order.paymentStatus === "COMPLETED" &&
                                 book.bookType === "eBook" ? (
                                   <Link
-                                    href="/flip-book/the-tireless-traveler-ebook.html"
+                                    href="/flip-book/tireless-traveler/the-tireless-traveler-ebook.html"
                                     className="btn btn-sm btn-primary"
                                   >
                                     Read
