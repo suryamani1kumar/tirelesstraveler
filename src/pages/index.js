@@ -6,17 +6,29 @@ import Link from "next/link";
 import Carousel from "react-bootstrap/Carousel";
 const banner = [
   {
+    imageName: "/images/02_Banner.jpg",
+    name: "",
+  },
+  {
     imageName: "/images/advanture.webp",
     name: "Sky Dive Pyramid Giza, Egypt.",
+  },
+  {
+    imageName: "/images/04_Banner.jpg",
+    name: "",
   },
   {
     imageName: "/images/bali.webp",
     name: "Bali, Indonesia",
   },
   {
-    imageName: "/images/antarctic_circle.webp",
-    name: "McMurdo Station, Antartica",
+    imageName: "/images/11_Banner.jpg",
+    name: "",
   },
+  // {
+  //   imageName: "/images/antarctic_circle.webp",
+  //   name: "McMurdo Station, Antartica",
+  // },
   {
     imageName: "/images/galapagus_trip.webp",
     name: "Charles Darwin Station, Galapagos",
@@ -25,62 +37,43 @@ const banner = [
     imageName: "/images/guadalcanal_solomon_island.webp",
     name: "The Guadalcanal American Memorial",
   },
-  {
-    imageName: "/images/sahara_desert_maurutania.webp",
-    name: "Camping at Sahara Desert",
-  },
+  // {
+  //   imageName: "/images/sahara_desert_maurutania.webp",
+  //   name: "Camping at Sahara Desert",
+  // },
   {
     imageName: "/images/sony_stick_bull_run_trip.webp",
     name: "Running with Bulls at Pamplona, Italy",
   },
 ];
 
-
 const gallery = [
   {
-    name: "Ruby ( Manik )",
     img: "/images/advanture.webp",
-    link: "/gemstones/ruby",
   },
   {
-    name: "Blue Sapphire ( Neelam )",
-    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787827408/gemstone-products/npp4ma5frmptmjpzmbpg.png",
-    link: "/gemstones/blue-sapphire",
+    img: "/images/antarctic_circle.webp",
   },
   {
-    name: "Emerald ( Panna )",
-    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787827051/gemstone-products/mlb3on5mpeothilxkmrz.png",
-    link: "/gemstones/emerald",
+    img: "/images/05_Banner.jpg",
   },
   {
-    name: "Yellow Sapphire ( Pukhraj )",
-    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787827592/gemstone-products/kpaz8jt4kdiz2we09p6h.png",
-    link: "/gemstones/yellow-sapphire",
+    img: "/images/10_Banner.jpg",
   },
   {
-    name: "Pearl ( Moti )",
-    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787844594/gemstone-products/t7vjucddlznnuou0adba.png",
-    link: "/gemstones/pearl",
+    img: "/images/17_Banner.jpg",
   },
   {
-    name: "Red Coral ( Moonga )",
-    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787844625/gemstone-products/kbdkfjjype71c5hyelg3.png",
-    link: "/gemstones/red-coral",
+    img: "/images/sahara_desert_maurutania.webp",
   },
   {
-    name: "Opal",
-    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787828503/gemstone-products/n6e9w7udpbx85myroua2.png",
-    link: "/gemstones/opal",
+    img: "/images/09_Banner.jpg",
   },
   {
-    name: "Turquoise ( Firoza )",
-    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787844648/gemstone-products/ozvefhlq1q4mj0ntonxp.jpg",
-    link: "/gemstones/turquoise",
+    img: "/images/07_Banner.jpg",
   },
   {
-    name: "Citrine ( Sunela )",
-    img: "https://res.cloudinary.com/djrtuyxoj/image/upload/v1787844667/gemstone-products/oes0zceeynedoault6f0.jpg",
-    link: "/gemstones/citrine",
+    img: "/images/bali.webp",
   },
 ];
 
@@ -91,12 +84,12 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>The Tireless Traveler </title>
+        <title>Arvinder Singh Bahal </title>
         <meta name="Content-Language" content="EN" />
-        <meta name="keywords" content="The Tireless Traveler" />
-        <meta name="description" content="The Tireless Traveler" />
+        <meta name="keywords" content="Arvinder Singh Bahal" />
+        <meta name="description" content="Arvinder Singh Bahal" />
         <link rel="canonical" href="https://www.tirelesstraveler.net/" />
-        <meta property="og:title" content="tirelesstraveler" />
+        <meta property="og:title" content="Arvinder Singh Bahal" />
         <meta property="og:url" content="https://www.tirelesstraveler.net" />
         <meta
           property="og:image"
@@ -174,7 +167,7 @@ export default function Home() {
           </div>
 
           <div className="aboutHeader">
-            <h5>About the Book</h5>
+            <h5>About the tireless traveler</h5>
             <div className="underline"></div>
           </div>
           <section className="about-company">
@@ -212,6 +205,49 @@ export default function Home() {
               />
             </div>
           </section>
+
+          <section className="planet-section">
+            <div className="planet-image-wrapper">
+              <Image
+                src="/images/MY_PLAYNET_MY_PLAYGROUND_COVER.jpg"
+                alt="My Planet My Playground book cover"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="planet-book-image"
+              />
+            </div>
+
+            <div className="planet-content">
+              <h2 className="planet-title">MY PLANET MY PLAYGROUND</h2>
+
+              <p>
+                Arvinder ‘Arvi’ Singh Bahal is an extraordinary explorer whose
+                passion for adventure has taken him to some of the world’s most
+                remote and fascinating destinations. From crossing the Sahara
+                Desert and exploring the Arctic to venturing into the Amazon
+                Rainforest, his journeys reflect an unstoppable spirit of
+                curiosity and courage. His adventures include skydiving,
+                exploring diverse cultures, and experiencing remarkable
+                landscapes across the globe.
+              </p>
+
+              <p>
+                At the age of 80, Arvi added another milestone to his remarkable
+                life by flying aboard Blue Origin’s NS-34 mission into space. My
+                Planet My Playground captures his incredible experiences,
+                inspiring adventures, and lifelong passion for exploration. More
+                than a travel story, it celebrates a life dedicated to
+                discovering the extraordinary and proving that age is never a
+                barrier to adventure.
+              </p>
+
+              <Link href="/publication" className="planet-read-more">
+                READ MORE
+              </Link>
+            </div>
+          </section>
+
           {/* <HomeCard /> */}
           <div className="relative mx-auto max-w-7xl">
             <h2 className="mb-3 font-serif text-2xl font-bold text-[#1A1A1A] sm:text-3xl">
@@ -221,41 +257,34 @@ export default function Home() {
             {/* ================= EDITORIAL GRID ================= */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
               {/* ================= FEATURED CATEGORY ================= */}
-              <Link
-                href={`${featuredCategory.link}`}
-                className="group relative min-h-[430px] overflow-hidden rounded-2xl bg-[#EDE8DC] sm:col-span-2 lg:col-span-1 lg:row-span-2"
-              >
+              <div className="group relative min-h-[430px] overflow-hidden rounded-2xl bg-[#EDE8DC] sm:col-span-2 lg:col-span-1 lg:row-span-2">
                 {/* Image */}
                 <img
                   src={featuredCategory.img}
-                  alt={featuredCategory.name}
+                  alt={"photo"}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
 
                 {/* Dark gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-
-              </Link>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/20 to-transparent" />
+              </div>
 
               {/* ================= SMALL CATEGORIES ================= */}
               {remainingCategories.map((gemstone) => (
-                <Link
-                  key={gemstone.link}
-                  href={gemstone.link}
+                <div
+                  key={gemstone.img}
                   className="group relative min-h-[220px] overflow-hidden rounded-2xl bg-[#EDE8DC]"
                 >
                   {/* Image */}
                   <img
                     src={gemstone.img}
-                    alt={gemstone.name}
+                    alt={"photo"}
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent transition-all duration-300 group-hover:from-black/85" />
-
-                </Link>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent transition-all duration-300 group-hover:from-black/85" />
+                </div>
               ))}
             </div>
 
@@ -263,24 +292,21 @@ export default function Home() {
             {gallery.length > 5 && (
               <div className="my-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 {gallery.slice(5).map((gemstone) => (
-                  <Link
-                    key={gemstone.link}
-                    href={gemstone.link}
+                  <div
+                    key={gemstone.img}
                     className="group relative h-45 overflow-hidden rounded-2xl bg-[#EDE8DC]"
                   >
                     <img
                       src={gemstone.img}
-                      alt={gemstone.name}
+                      alt={"photo"}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
-
-                  </Link>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  </div>
                 ))}
               </div>
             )}
-
           </div>
         </div>
       </div>
