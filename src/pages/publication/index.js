@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import "../../component/Publications/publication.css";
+import "../../component/Publications/publication.module.css";
 
 const publications = [
   {
@@ -30,8 +30,14 @@ const Publication = () => {
     <div className="pub-list-page">
       <Head>
         <title>Publications | The Tireless Traveler</title>
-        <meta name="description" content="Explore extraordinary stories, remarkable journeys, and publications that inspire you to see the world differently." />
-        <link rel="canonical" href="https://www.tirelesstraveler.net/publication" />
+        <meta
+          name="description"
+          content="Explore extraordinary stories, remarkable journeys, and publications that inspire you to see the world differently."
+        />
+        <link
+          rel="canonical"
+          href="https://www.tirelesstraveler.net/publication"
+        />
       </Head>
 
       <section className="pub-list-hero">
