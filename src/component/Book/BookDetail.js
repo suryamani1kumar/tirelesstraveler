@@ -8,6 +8,12 @@ import {
   faLinkedin,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import {
+  faShareNodes,
+  faCheck,
+  faBookOpen,
+  faShieldHalved,
+} from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { Context } from "../context";
@@ -19,189 +25,296 @@ const img = [
   "/images/book_inside_1.webp",
 ];
 
-const handleShare = async () => {
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: `Explore Arvi’s journey, a photographer and future astronaut, through captivating visuals and stories.`,
-        text: `Explore Arvi’s journey, a photographer and future astronaut, through captivating visuals and stories.`,
-        url: "https://www.tirelesstraveler.net/publication",
-      });
-    } catch (error) {
-      console.error("Error sharing:", error);
-    }
-  } else {
-    // Fallback for browsers that don't support Web Share API
-    alert(
-      "Web Share API is not supported in this browser. You can manually copy the URL."
-    );
-  }
-};
-
 const BookDetail = () => {
   const router = useRouter();
-  const [imageChange, setImageChnage] = useState("/images/book-box-cover.webp");
-  const [buyitems, setBuyItems] = useState({ eBook: "35", hardcover: "" });
+
+  const [imageChange, setImageChange] = useState(img[0]);
+  const [buyitems, setBuyItems] = useState({
+    eBook: "35.00",
+    hardcover: "",
+  });
+  const [loading, setLoading] = useState(false);
+
   const { setOpenSignInModal } = useContext(Context);
 
-  const handleBuyitem = (e) => {
+  const handleShare = async () => {
+    const shareData = {
+      title: "The Tireless Traveler",
+      text: "Discover Arvi Singh Bahal's extraordinary journey through the world.",
+      url: "https://www.tirelesstraveler.net/publication",
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(shareData.url);
+        alert("Publication link copied!");
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        console.error("Unable to share:", error);
+      }
+    }
+  };
+
+  const handleBuyItem = (e) => {
     const { name, value, checked } = e.target;
-    setBuyItems((prevState) => ({
-      ...prevState,
+
+    setBuyItems((prev) => ({
+      ...prev,
       [name]: checked ? value : "",
     }));
   };
 
-  const createOrder = async (id) => {
-    const order = Object.entries(buyitems)
-      .filter(
-        ([_, value]) => value !== undefined && value !== null && value !== ""
-      )
-      .map(([key, value]) => ({
-        bookType: key,
-        price: value,
+  const createOrder = async () => {
+    const products = Object.entries(buyitems)
+      .filter(([, price]) => price !== "")
+      .map(([bookType, price]) => ({
+        bookType,
+        price,
         quantity: 1,
       }));
 
-    const body = {
-      products: order,
-    };
+    if (!products.length) {
+      alert("Please select a book format before continuing.");
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/createOrder`,
-        body,
-        {
-          withCredentials: true,
-        }
+        { products },
+        { withCredentials: true },
       );
 
       if (res.status === 201) {
         router.push(`/checkout?id=${res.data.data}`);
       }
     } catch (err) {
-      if (err.response) {
-        if (err.response.status === 401) {
-          setOpenSignInModal(true);
-        } else {
-          console.error("API error:", err.response.data || err.message);
-        }
+      if (err.response?.status === 401) {
+        setOpenSignInModal(true);
       } else {
-        console.error("Unexpected error:", err.message);
+        console.error(
+          "Unable to create order:",
+          err.response?.data || err.message,
+        );
+        alert("Unable to create your order. Please try again.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
+  const total = Object.values(buyitems).reduce(
+    (sum, price) => sum + (Number(price) || 0),
+    0,
+  );
+
   return (
-    <div className={styles.bookDetailContainer}>
-      <nav className="breadcrumb">
-        <Link href="/">Home&nbsp;</Link> /{" "}
-        <span>&nbsp; THE TIRELESS TRAVELER</span>
+    <section className={styles.bookDetailContainer}>
+      <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+        <Link href="/">Home</Link>
+        <span>/</span>
+        <Link href="/publication">Publication</Link>
+        <span>/</span>
+        <span aria-current="page">The Tireless Traveler</span>
       </nav>
 
       <div className={styles.bookMain}>
+        {/* Image Gallery */}
         <div className={styles.bookImage}>
-          <div>
+          <div className={styles.mainImage}>
+            <span className={styles.imageBadge}>THE COLLECTION</span>
+
             <Image
               src={imageChange}
-              alt={imageChange.replace("/images/", "")}
-              width={0}
-              height={250}
+              alt="The Tireless Traveler book preview"
+              width={700}
+              height={700}
+              priority
+              sizes="(max-width: 768px) 90vw, 45vw"
+              className={styles.featuredImage}
             />
           </div>
-          <div className={styles.smallImage}>
+
+          <div className={styles.smallImage} aria-label="Book image gallery">
             {img.map((item, i) => (
-              <Image
-                src={item}
-                alt={item.replace("/images/", "")}
-                width={40}
-                height={40}
-                key={i + 1}
-                onMouseOver={() => setImageChnage(item)}
-                onMouseLeave={() =>
-                  setImageChnage("/images/book-box-cover.webp")
-                }
-              />
+              <button
+                type="button"
+                key={item}
+                className={`${styles.thumbnail} ${
+                  imageChange === item ? styles.activeThumbnail : ""
+                }`}
+                onClick={() => setImageChange(item)}
+                aria-label={`View book image ${i + 1}`}
+                aria-pressed={imageChange === item}
+              >
+                <Image
+                  src={item}
+                  alt={`Book preview ${i + 1}`}
+                  width={150}
+                  height={150}
+                  sizes="150px"
+                />
+              </button>
             ))}
           </div>
         </div>
 
+        {/* Book Information */}
         <div className={styles.bookInfo}>
-          <h2>THE TIRELESS TRAVELER</h2>
-          <p>
-            <strong>Author(s):</strong> Arvinder Singh Bahal (Arvi)
-          </p>
-          <p>
-            Email:{" "}
-            <Link href={"mailto:arvibahal@gmail.com"}>arvibahal@gmail.com</Link>
-          </p>
-          <div style={{ display: "flex", gap: "10px", fontSize: "24px" }}>
-            <a
-              href="https://www.facebook.com/arvibahal"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/arvinder-bahal-24242519"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faLinkedin} />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <button
-              onClick={handleShare}
-              style={{ fontSize: "14px", color: "#3585da" }}
-            >
-              <i className="fa fa-share-alt"></i>
-            </button>
+          <h1>THE TIRELESS TRAVELER</h1>
+
+          <div>
+            <span className={styles.authorLabel}>WRITTEN BY</span>
+            <h2>
+              Arvinder Singh Bahal <span>(Arvi)</span>
+            </h2>
           </div>
 
-          <div className={styles.ebookOptions}>
-            <div>
-              <button>
-                <input
-                  type="checkbox"
-                  id="EBOOK"
-                  name="eBook"
-                  value="35.00"
-                  onChange={handleBuyitem}
-                  checked={buyitems.eBook}
-                />
-                <label htmlFor="EBOOK" style={{ paddingLeft: "8px" }}>
-                  EBOOK (PDF) $ 35.00
-                </label>
-              </button>
-              <button>
-                <input
-                  type="checkbox"
-                  id="Hardcover"
-                  name="hardcover"
-                  value="100.00"
-                  onChange={handleBuyitem}
-                  checked={buyitems.hardcover}
-                />
-                <label htmlFor="Hardcover" style={{ paddingLeft: "8px" }}>
-                  Hardcover $ 100.00
-                </label>
-              </button>
+          <p className={styles.authorDescription}>
+            Discover a lifetime of adventure, breathtaking photography, and
+            stories from the farthest corners of the planet.
+          </p>
+
+          <div className={styles.purchaseSection}>
+            <div className={styles.purchaseHeading}>
+              <div>
+                <span className={styles.productEyebrow}>YOUR EDITION</span>
+                <h3>Choose Your Format</h3>
+              </div>
+
+              <span className={styles.currencyNote}>USD</span>
             </div>
 
-            <div>
-              <button onClick={createOrder}>Buy Now</button>
+            <label
+              className={`${styles.formatOption} ${
+                buyitems.eBook ? styles.selectedFormat : ""
+              }`}
+            >
+              <input
+                type="checkbox"
+                name="eBook"
+                value="35.00"
+                checked={Boolean(buyitems.eBook)}
+                onChange={handleBuyItem}
+              />
+
+              <span className={styles.formatIcon}>
+                <FontAwesomeIcon icon={faBookOpen} />
+              </span>
+
+              <span className={styles.formatDetails}>
+                <strong>Digital Edition</strong>
+                <small>E-book · PDF format</small>
+              </span>
+
+              <span className={styles.formatPrice}>$35.00</span>
+
+              <span className={styles.formatCheck}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+            </label>
+
+            <label
+              className={`${styles.formatOption} ${
+                buyitems.hardcover ? styles.selectedFormat : ""
+              }`}
+            >
+              <input
+                type="checkbox"
+                name="hardcover"
+                value="100.00"
+                checked={Boolean(buyitems.hardcover)}
+                onChange={handleBuyItem}
+              />
+
+              <span className={styles.formatIcon}>
+                <FontAwesomeIcon icon={faBookOpen} />
+              </span>
+
+              <span className={styles.formatDetails}>
+                <strong>Hardcover Edition</strong>
+                <small>Printed book</small>
+              </span>
+
+              <span className={styles.formatPrice}>$100.00</span>
+
+              <span className={styles.formatCheck}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+            </label>
+
+            <div className={styles.orderSummary}>
+              <span>Total</span>
+              <strong>${total.toFixed(2)}</strong>
             </div>
+
+            <button
+              type="button"
+              className={styles.buyButton}
+              onClick={createOrder}
+              disabled={loading}
+            >
+              {loading ? "Processing..." : "Continue to Checkout"}
+              {!loading && <span>→</span>}
+            </button>
+
+            <p className={styles.secureNote}>
+              <FontAwesomeIcon icon={faShieldHalved} />
+              Secure checkout · Choose your preferred edition
+            </p>
+          </div>
+          <div className={styles.socialSection}>
+            <span>CONNECT WITH THE AUTHOR</span>
+
+            <div className={styles.socialLinks}>
+              <a
+                href="https://www.facebook.com/arvibahal"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <FontAwesomeIcon icon={faFacebook} />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/arvinder-bahal-24242519"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <FontAwesomeIcon icon={faLinkedin} />
+              </a>
+
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
+
+              <button
+                type="button"
+                onClick={handleShare}
+                aria-label="Share publication"
+              >
+                <FontAwesomeIcon icon={faShareNodes} />
+              </button>
+            </div>
+          </div>
+          <div className={styles.contactInfo}>
+            Questions about the book?{" "}
+            <Link href="mailto:arvibahal@gmail.com">Contact the author</Link>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

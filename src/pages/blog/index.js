@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import styles from "../../styles/blog.module.css";
 import Link from "next/link";
 import Head from "next/head";
 

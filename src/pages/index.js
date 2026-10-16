@@ -1,5 +1,3 @@
-import HomeCard from "@/component/BlogCard";
-import { useDeviceType } from "@/hook/useDeviceType";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,22 +23,6 @@ const banner = [
     imageName: "/images/11_Banner.jpg",
     name: "",
   },
-  // {
-  //   imageName: "/images/antarctic_circle.webp",
-  //   name: "McMurdo Station, Antartica",
-  // },
-  {
-    imageName: "/images/galapagus_trip.webp",
-    name: "Charles Darwin Station, Galapagos",
-  },
-  {
-    imageName: "/images/guadalcanal_solomon_island.webp",
-    name: "The Guadalcanal American Memorial",
-  },
-  // {
-  //   imageName: "/images/sahara_desert_maurutania.webp",
-  //   name: "Camping at Sahara Desert",
-  // },
   {
     imageName: "/images/sony_stick_bull_run_trip.webp",
     name: "Running with Bulls at Pamplona, Italy",
@@ -78,7 +60,6 @@ const gallery = [
 ];
 
 export default function Home() {
-  const device = useDeviceType();
   const featuredCategory = gallery[0];
   const remainingCategories = gallery.slice(1, 5);
   return (
@@ -103,17 +84,15 @@ export default function Home() {
               <div className="carouselconatiner">
                 <Image
                   src={item.imageName}
-                  alt="asdsadsas"
+                  alt={item.name || "Travel destination"}
                   height={0}
                   width={0}
                 />
               </div>
 
-              {/* {device !== "Mobile" && ( */}
               <Carousel.Caption>
                 <h3>{item.name}</h3>
               </Carousel.Caption>
-              {/* )} */}
             </Carousel.Item>
           ))}
         </Carousel>
@@ -193,7 +172,7 @@ export default function Home() {
                 marks his first writing effort, with more to come.
               </p>
               <button className="about-read-more">
-                <Link href="/publication">READ MORE</Link>
+                <Link href="/publication/the-tireless-traveler">READ MORE</Link>
               </button>
             </div>
             <div className="about-content-images">
@@ -242,13 +221,15 @@ export default function Home() {
                 barrier to adventure.
               </p>
 
-              <Link href="/publication" className="planet-read-more">
+              <Link
+                href="/publication/my-playnet-my-playground"
+                className="planet-read-more"
+              >
                 READ MORE
               </Link>
             </div>
           </section>
 
-          {/* <HomeCard /> */}
           <div className="relative mx-auto max-w-7xl">
             <h2 className="mb-3 font-serif text-2xl font-bold text-[#1A1A1A] sm:text-3xl">
               Our Gallery

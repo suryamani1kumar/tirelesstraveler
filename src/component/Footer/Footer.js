@@ -13,16 +13,6 @@ const Footer = () => {
             <h2>196 Countries</h2>
             <p>Visited</p>
           </div>
-          {/* <div className="stat">
-            <i className="fa fa-globe"></i>
-            <h2>250,000 KM</h2>
-            <p>Traveled</p>
-          </div>
-          <div className="stat">
-            <i className="fa fa-image"></i>
-            <h2>15,000 Photos</h2>
-            <p>Taken</p>
-          </div> */}
         </div>
       </div>
       <p className="py-4 text-center">

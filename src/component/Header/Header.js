@@ -40,7 +40,12 @@ const Header = () => {
   const device = useDeviceType();
   const router = useRouter();
   const [show, setShow] = useState(false);
-  const { openSignInModal, openSignUpModal, setOpenSignInModal, setOpenSignUpModal } = useContext(Context)
+  const {
+    openSignInModal,
+    openSignUpModal,
+    setOpenSignInModal,
+    setOpenSignUpModal,
+  } = useContext(Context);
 
   const handleCloseSignInModal = () => setOpenSignInModal(false);
   const handleShowSignInModal = () => {
@@ -71,7 +76,7 @@ const Header = () => {
       const data = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/customerLogin`,
         userdata,
-        { withCredentials: true }
+        { withCredentials: true },
       );
       if (data.status === 200) {
         router.push("/my-profile");
@@ -91,14 +96,13 @@ const Header = () => {
     try {
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/customerRegister`,
-        userdata
+        userdata,
       );
       if (data.message === "customer registered successfully") {
         handleShowSignInModal();
       }
     } catch (error) {
       if (error.response) {
-        // handleShowSignInModal();
         console.error("Error:", error.response.data);
       } else {
         console.error("Error:", error.message);
@@ -111,7 +115,7 @@ const Header = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/customerAuth`,
         {
           withCredentials: true,
-        }
+        },
       );
       if (res.status === 200) {
         router.push("/my-profile");
@@ -185,9 +189,9 @@ const Header = () => {
               <li>
                 <Link href="/publication">Publication</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/blog">Blog</Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/about">About</Link>
               </li>
