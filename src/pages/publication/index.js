@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import "../../component/Publications/publication.module.css";
 
 const publications = [
   {
@@ -10,7 +9,7 @@ const publications = [
     title: "MY PLANET MY PLAYGROUND",
     author: "Arvinder (Arvi) Singh Bahal",
     description:
-      "Discover the extraordinary adventures of Arvi Bahal, an explorer whose remarkable journeys span continents, cultures, extreme landscapes, and even outer space.",
+      "Arvinder ‘Arvi’ Singh Bahal is an extraordinary explorer whose passion for adventure has taken him to some of the world’s most  remote and fascinating destinations.",
     image: "/images/MY_PLAYNET_MY_PLAYGROUND_COVER.jpg",
     link: "/publication/my-playnet-my-playground",
   },

@@ -72,9 +72,6 @@ const Publication = () => {
             >
               <Tab eventKey="author" title="About the Author">
                 <div className="publication-tab-content">
-                  <span className="publication-eyebrow">
-                    THE MAN BEHIND THE LENS
-                  </span>
 
                   <h3>Meet Arvi Singh Bahal</h3>
 
@@ -108,10 +105,7 @@ const Publication = () => {
 
               <Tab eventKey="book" title="About the Book">
                 <div className="publication-tab-content">
-                  <span className="publication-eyebrow">
-                    MORE THAN A TRAVEL BOOK
-                  </span>
-
+                
                   <h3>A World Waiting to Be Discovered</h3>
 
                   <p>
@@ -133,10 +127,7 @@ const Publication = () => {
 
               <Tab eventKey="visual" title="Book Preview">
                 <div className="publication-tab-content">
-                  <span className="publication-eyebrow">
-                    EXPERIENCE THE JOURNEY
-                  </span>
-
+                  
                   <h3>Take a Closer Look</h3>
 
                   <p>

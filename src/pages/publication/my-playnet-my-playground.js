@@ -1,68 +1,112 @@
-import BookDetail from "@/component/Book/BookDetail";
+
+import React from "react";
 import Head from "next/head";
 import { Tabs, Tab } from "react-bootstrap";
+import PlaygroundDetail from "@/component/Book/PlaygroundDetails";
 
 const Publication = () => {
   return (
     <>
       <Head>
-        <title>Publication | The Tireless Traveler</title>
-        <meta name="Content-Language" content="EN" />
+        {/* Basic SEO */}
+        <title>My Planet My Playground | Arvinder Singh Bahal</title>
+
+        <meta name="Content-Language" content="en" />
+
         <meta
           name="keywords"
-          content="Tireless Traveler, Arvi Singh Bahal, travel photography, book publication"
+          content="My Planet My Playground, Arvinder Singh Bahal, Arvi Bahal, adventure book, world exploration, travel photography, travel adventures, book publication"
         />
+
         <meta
           name="description"
-          content="Discover The Tireless Traveler, an extraordinary journey of global exploration, photography, and storytelling by Arvi Singh Bahal."
+          content="Discover My Planet My Playground by Arvinder (Arvi) Singh Bahal, an extraordinary journey of adventure, exploration, remarkable destinations, and unforgettable experiences across the world and beyond."
         />
+
+        <meta name="author" content="Arvinder (Arvi) Singh Bahal" />
+
+        <meta
+          name="robots"
+          content="index, follow"
+        />
+
         <link
           rel="canonical"
           href="https://www.tirelesstraveler.net/publication"
         />
 
+        {/* Open Graph / Facebook */}
         <meta
           property="og:title"
-          content="The Tireless Traveler | Publication"
+          content="My Planet My Playground | Arvinder Singh Bahal"
         />
+
         <meta
           property="og:description"
-          content="Explore the extraordinary world of Arvi Singh Bahal through travel, photography, and storytelling."
+          content="Explore the extraordinary adventures of Arvinder (Arvi) Singh Bahal in My Planet My Playground, a celebration of discovery, exploration, and the spirit of adventure."
         />
+
         <meta
           property="og:image"
-          content="https://www.tirelesstraveler.net/images/book-box-cover.webp"
+          content="https://www.tirelesstraveler.net/images/MY_PLAYNET_MY_PLAYGROUND_COVER.jpg"
         />
+
+        <meta
+          property="og:image:alt"
+          content="My Planet My Playground book cover"
+        />
+
         <meta
           property="og:url"
           content="https://www.tirelesstraveler.net/publication"
         />
-        <meta property="og:type" content="website" />
 
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:type" content="book" />
+
+        <meta
+          property="og:site_name"
+          content="Tireless Traveler"
+        />
+
+        <meta
+          property="book:author"
+          content="Arvinder Singh Bahal"
+        />
+
+        {/* Twitter / X */}
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
+
         <meta
           name="twitter:title"
-          content="The Tireless Traveler | Publication"
+          content="My Planet My Playground | Arvinder Singh Bahal"
         />
+
         <meta
           name="twitter:description"
-          content="A remarkable journey across the world, captured through photography and storytelling."
+          content="Discover a remarkable life of adventure, exploration, and unforgettable journeys with Arvinder (Arvi) Singh Bahal."
         />
+
         <meta
           name="twitter:image"
-          content="https://www.tirelesstraveler.net/images/book-box-cover.webp"
+          content="https://www.tirelesstraveler.net/images/MY_PLAYNET_MY_PLAYGROUND_COVER.jpg"
+        />
+
+        <meta
+          name="twitter:image:alt"
+          content="My Planet My Playground book cover"
         />
       </Head>
 
       <div className="publication-page">
-        {/* Book Section */}
         <section
           id="publication-details"
           className="publication-book-section container"
         >
-          <BookDetail />
+          <PlaygroundDetail />
 
-          {/* Information Tabs */}
           <div className="publication-tabs-wrapper">
             <Tabs
               defaultActiveKey="author"
@@ -70,87 +114,93 @@ const Publication = () => {
               className="publication-tabs"
               fill
             >
+              {/* About the Author */}
               <Tab eventKey="author" title="About the Author">
                 <div className="publication-tab-content">
-                  <span className="publication-eyebrow">
-                    THE MAN BEHIND THE LENS
-                  </span>
 
                   <h3>Meet Arvi Singh Bahal</h3>
 
                   <p>
-                    Arvinder “Arvi” Singh Bahal’s life is a testament to
-                    extraordinary ambition and an unrelenting spirit of
-                    adventure. After immigrating to the United States in the
-                    1970s with just $108, he built successful businesses in
-                    apparel and real estate before turning his passion for
-                    travel into a lifelong pursuit of discovery.
+                    Arvinder (Arvi) Singh Bahal is an entrepreneur,
+                    photographer, and passionate explorer whose extraordinary
+                    life is driven by curiosity and adventure. Born in Agra,
+                    India, he moved to the United States in 1975 and built
+                    successful ventures across fashion, sportswear,
+                    hospitality, and real estate.
                   </p>
 
                   <p>
-                    By 2023, Arvi had visited all 193 UN member countries,
-                    exploring more than two hundred territories and accumulating
-                    over three million miles of travel. His adventures span
-                    diverse landscapes and modes of transport, from freight
-                    trains to dog sleds.
+                    His travels have taken him across the globe, from the
+                    Sahara Desert and the Amazon Rainforest to the Arctic
+                    and Antarctica. Through his remarkable journeys, Arvi
+                    has experienced diverse cultures, extraordinary
+                    landscapes, and some of the world&apos;s most remote
+                    destinations.
                   </p>
 
                   <p>
-                    A passionate photographer with an archive of approximately
-                    one million images, Arvi captures both iconic landmarks and
-                    hidden corners of the world. Recognized as Future Astronaut
-                    No. 326 with Virgin Galactic, his curiosity reaches beyond
-                    our planet, celebrating the resilience of humanity and the
-                    limitless possibilities of exploration.
+                    In August 2025, at the age of 80, Arvi traveled aboard
+                    Blue Origin&apos;s NS-34 mission, adding space exploration
+                    to his extraordinary list of adventures. His life
+                    demonstrates that curiosity, courage, and the desire
+                    to discover the unknown have no age limit.
                   </p>
                 </div>
               </Tab>
 
+              {/* About the Book */}
               <Tab eventKey="book" title="About the Book">
                 <div className="publication-tab-content">
-                  <span className="publication-eyebrow">
-                    MORE THAN A TRAVEL BOOK
-                  </span>
-
-                  <h3>A World Waiting to Be Discovered</h3>
+                  <h3>My Planet My Playground</h3>
 
                   <p>
-                    The Tireless Traveler offers a window into the remarkable
-                    places, people, and experiences that shape our world.
-                    Through compelling photography and personal exploration, it
-                    celebrates the beauty of unfamiliar cultures, the thrill of
-                    discovery, and the courage to venture beyond the known.
+                    My Planet My Playground celebrates the extraordinary
+                    adventures of Arvinder (Arvi) Singh Bahal, whose passion
+                    for exploration has taken him to remarkable destinations
+                    across the planet and beyond. From deserts and frozen
+                    landscapes to remote islands and outer space, his
+                    experiences reflect a fearless spirit of discovery.
                   </p>
 
                   <p>
-                    Every journey reveals a new perspective. Every photograph
-                    preserves a moment. Together, they invite readers to
-                    experience the world with renewed curiosity and a deeper
-                    appreciation for its extraordinary diversity.
+                    Through captivating stories, unforgettable experiences,
+                    and a deep appreciation for the world&apos;s diverse cultures
+                    and landscapes, this book invites readers to look
+                    beyond the ordinary and embrace the possibilities
+                    of exploration.
+                  </p>
+
+                  <p>
+                    More than a travel book, My Planet My Playground is a
+                    celebration of curiosity, courage, and a life dedicated
+                    to discovering the extraordinary.
                   </p>
                 </div>
               </Tab>
 
+              {/* Book Preview */}
               <Tab eventKey="visual" title="Book Preview">
                 <div className="publication-tab-content">
-                  <span className="publication-eyebrow">
-                    EXPERIENCE THE JOURNEY
-                  </span>
 
-                  <h3>Take a Closer Look</h3>
+                  <h3>Explore the Book</h3>
 
                   <p>
-                    Step inside the world of The Tireless Traveler through this
-                    visual preview.
+                    Take a closer look at My Planet My Playground and
+                    discover the adventures, places, and experiences
+                    that make Arvi&apos;s journey extraordinary.
                   </p>
 
                   <div className="publication-video-wrapper">
                     <video
                       controls
                       preload="metadata"
-                      poster="/images/book-box-cover.webp"
+                      poster="/images/MY_PLAYNET_MY_PLAYGROUND_COVER.jpg"
                     >
-                      <source src="/images/book_video.mp4" type="video/mp4" />
+                      <source
+                        src="/images/book_video.mp4"
+                        type="video/mp4"
+                      />
+
                       Your browser does not support HTML video.
                     </video>
                   </div>
